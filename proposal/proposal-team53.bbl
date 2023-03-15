@@ -1,0 +1,11 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Lu et~al.(2022)Lu, Han, and Ning}]{chet}
+Chang Lu, Tian Han, and Yue Ning. 2022.
+\newblock \href {https://doi.org/10.1609/aaai.v36i4.20380} {Context-aware
+  health event prediction via transition functions on dynamic disease graphs}.
+\newblock \emph{Proceedings of the AAAI Conference on Artificial Intelligence},
+  36(4):4567–4574.
+
+\end{thebibliography}
