@@ -114,12 +114,19 @@ download both the MIMIC-III and MIMIC-IV datasets from PhysioNet
 \# TODO: Sherry (Will to also experiment with the code)
 
 \section{Specify if you will be re-using existing code and provide a link to it,
-or if you will implement the code yourself.} 
+or if you will implement the code yourself.}
 We plan to re-use the existing code provided by the authors of the paper for
-data preprocessing and implement our own code for building the model
-architecture as well as training, evaluation, and testing. The code provided by
-the authors is available at \url {https://github.com/LuChang-CS/Chet}, we will
-use this as reference for our own implementations.
+data preprocessing, building the needed input graphs/matrices, building the
+model architecture, and training the model for the experiment. We will author
+our own shell scripts to download, unzip, and move datasets into the appropriate
+paths. We also plan to evelop our own code to compute and evaluate model
+performance based on the test dataset following the metrics and methodology
+detailed in the paper, as well as make the required modifications to the
+existing model architecture and training code to perform the ablation studies
+mentioned in the paper as well as our own extra ablations. The code provided by
+the authors is available at \url {www.github.com/LuChang-CS/Chet}
+\cite{chet}, we will clone this as reference for our implementations described
+above.
 
 \bibliographystyle{acl_natbib}
 \bibliography{dl4h-sp23-project-team53}
