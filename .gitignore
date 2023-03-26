@@ -143,4 +143,6 @@ dmypy.json
 data/
 
 # PDF output files
+proposal/*.pdf
+report/*.pdf
 *.pdf

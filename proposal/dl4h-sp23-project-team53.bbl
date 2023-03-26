@@ -1,11 +1,10 @@
 \begin{thebibliography}{4}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Goldberger et~al.(2000 (June 13))Goldberger, Amaral, Glass,
-  Hausdorff, Ivanov, Mark, Mietus, Moody, Peng, and Stanley}]{physionet}
+\bibitem[{Goldberger et~al.(2000)Goldberger, Amaral, Glass, Hausdorff, Ivanov,
+  Mark, Mietus, Moody, Peng, and Stanley}]{physionet}
 A.~L. Goldberger, L.~A.~N. Amaral, L.~Glass, J.~M. Hausdorff, P.~Ch. Ivanov,
-  R.~G. Mark, J.~E. Mietus, G.~B. Moody, C.-K. Peng, and H.~E. Stanley. 2000
-  (June 13).
+  R.~G. Mark, J.~E. Mietus, G.~B. Moody, C.-K. Peng, and H.~E. Stanley. 2000.
 \newblock Physiobank, physiotoolkit, and physionet: Components of a new
   research resource for complex physiologic signals.
 \newblock \emph{Circulation}, 101(23):e215--e220.
