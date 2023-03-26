@@ -82,7 +82,16 @@ outcomes and diagnoses.
 
 \section{Describe the new and specific approach taken by the
 paper. Discuss why it is interesting or innovative.}
-\# TODO: Sherry
+Instead of treating diagnosis as independent diseases as most existing approaches,
+this paper tried to view disease diagnosis as co-dependent events and use these
+combinational and dynamic disease information to inform the deep learning model and make it  
+context-aware. The most innovative part of the approach is the design to include both
+disease combinational information and the dynamic scheme of disease into the model. To include 
+disease combinational information, the paper constructed a weighted disease combination
+based on the entire longitudinal EHR data globally and also a disease subgraph based on the 
+specific visit locally. To include dynamic scheme of diseases, the paper utilized a disease-level
+temporal learning with multiple diagnosis roles and corresponding transition functions to extract
+historical contexts.
 
 \section{Identify the specific hypotheses you plan to verify in your
 reproduction study.}
@@ -101,7 +110,23 @@ best-in-class models.
 
 \section{Outline any additional ablations you plan to do and
 explain why they are interesting.}
-\# TODO: Sherry
+As an initial proposal, we are interested in the following four potential ablation studies. We will at least complete one. Additional ones
+will be tried if we have enough capacity.
+
+\begin{itemize}
+  \item Removing the dynamic part of GNN. This ablation study is mentioned in the paper with few details. This ablation study is interesting 
+  because dynamic subgraph is used for building local context of visits in the model. Removing this part will only leave global combination
+  graph in GNN, and by comparing this variant with the original Chet, it will help us understand the effect of dynamic subgraphs.
+  \item Removing  the transition functions. This ablation study is mentioned in the paper with few details. This ablation study is interesting 
+  because transition functions are used for extracting historical contexts for each diagnosis roles to learn transition process of diseases. By 
+  comparing this variant with the original Chet, it will help us understand the effect of these transition functions.
+  \item Removing attention from embedding layer. At the last layer of the model, the paper applied a location-based attention to calculate the 
+  final patient embedding of all visits. By comparing this variant with the original Chet, it will help us understand the effect of the attention
+  used in the embedding layer.
+  \item Reduce three diagnosis roles and three corresponding transition functions to two. When doing diagnosis-level temporal learning, the paper 
+  defined three diagnosis roles and used three corresponding transition functions. We want to try to reduce to two to better understand the importance
+  of these diagnosis roles.
+\end{itemize}
 
 \section{Explain how you have access to the necessary data.}
 For their experiment, the authors use the MIMIC-III \cite{mimic3} and MIMIC-IV
@@ -111,7 +136,15 @@ download both the MIMIC-III and MIMIC-IV datasets from PhysioNet
 \cite{physionet}.
 
 \section{Discuss the computational feasibility of your proposed work.}
-\# TODO: Sherry (Will to also experiment with the code)
+We have downloaded the data to our local machine and used the author's 
+original \href{https://github.com/LuChang-CS/Chet}{code base} to test 
+the computational feasibility. Based on our initial investigation, 
+it took around 10 minutes for data preprocessing and 96 hours to complete 
+total 200 epoches of training for the training set. These are definitely
+long-running tasks but still feasible with our current resource. But we might
+slightly reduce the size of dataset or the epoch iteration numbers during actual training
+for our ablation studies depends on our capacity.
+
 
 \section{Specify if you will be re-using existing code and provide a link to it,
 or if you will implement the code yourself.}
