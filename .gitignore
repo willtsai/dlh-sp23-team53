@@ -141,3 +141,6 @@ dmypy.json
 
 # local data directory
 data/
+
+# PDF output files
+*.pdf
