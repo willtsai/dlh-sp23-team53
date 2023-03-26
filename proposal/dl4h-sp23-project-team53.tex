@@ -65,7 +65,20 @@ Functions on Dynamic Disease Graphs} \cite{chet}
 
 \section{State the general problem the paper aims to solve. Do not
 use the same language as the paper.}
-\# TODO: Will
+The authors of the paper propose a new deep learning model called Chet
+(\textbf{c}ontext-aware \textbf{h}ealth \textbf{e}vent prediction via
+\textbf{t}ransition functions on dynamic disease graphs) that leverages the
+relationship between diseases and how they develop over time to predict future
+outcomes and diagnoses. Existing research on deep learning models for
+classification and prediction of diseases based on longitudinal EHR data have
+modeled disease diagnoses as independent events in their respective visits.
+However, intuition and data indicate that there are in fact hidden patterns
+within the combinations of disease diagnoses that may be useful for predicting
+future outcomes for patients, but yet have not been leveraged in existing
+best-in-class healthcare deep learning models. The Chet model is able to learn
+how diagnosed diseases develop over the course of each patient's doctor visits
+and then utilize this learned disease combination context to predict future
+outcomes and diagnoses. 
 
 \section{Describe the new and specific approach taken by the
 paper. Discuss why it is interesting or innovative.}
@@ -73,125 +86,47 @@ paper. Discuss why it is interesting or innovative.}
 
 \section{Identify the specific hypotheses you plan to verify in your
 reproduction study.}
-\# TODO: Will
+In our reproduction study, we will use the same methodology as proposed by the
+authors for data selection, cleaning, and preprocessing as the authors of the
+paper. Specifically, we will join the MIMIC-III and MIMIC-IV datasets along the
+same overlapping time ranges that the authors describe and split
+training/validation/test sets randomly using the same ratios they used. We will
+build the diagnosis graphs and calculate the adjacency matrices for their
+corresponding subgraphs using the same methodology described by the authors.
+Leveraging the same parameter settings specified, we will train the model and
+then compare the performance of the Chet model to the listed
+baseline performance of best-in-class models for diagnosis prediction and heart
+failure prediction. We will not attempt to reproduce the baseline performance of
+best-in-class models.
 
 \section{Outline any additional ablations you plan to do and
 explain why they are interesting.}
 \# TODO: Sherry
 
 \section{Explain how you have access to the necessary data.}
-\# TODO: Will
+For their experiment, the authors use the MIMIC-III \cite{mimic3} and MIMIC-IV
+\cite{mimic4} datasets for training, validation, and testing. Since we have
+completed the required training and are credentialed users, we are able to
+download both the MIMIC-III and MIMIC-IV datasets from PhysioNet
+\cite{physionet}.
 
 \section{Discuss the computational feasibility of your proposed work.}
 \# TODO: Sherry (Will to also experiment with the code)
 
-\section{Specify if you will be re-using existing code and provide
-a link to it, or if you will implement the code yourself.}
-\#TODO: Will
-
-% \section{Introduction}
-% \# TODO:
-% A  few  sentences  placing  the  work  in  context. Limit it to a few paragraphs at most; your report is on reproducing a piece of work, you don’t have to motivate that work. However, it should be clear enough what the original paper is about and what the contribution of it is.
-
-% \section{Scope of reproducibility}
-% \# TODO:
-% Explain the claims from the paper you picked for the reproduction study and briefly motivate your choice. We recommend picking the claim that is the central contribution of the paper. To find what this contribution is, try to summarize the most important result of the paper in 1-2 sentences, e.g. ``This paper introduces a new activation function X that outperforms a similar activation function Y on tasks Z,V,W.'' 
-
-% Make the scope as specific as possible. It should be something that can be supported or rejected by your data. For example, consider this scope: 
-
-% \textit{``Contextual embedding models have shown strong performance on a number of tasks across NLP. We will run experiments evaluating two types of contextual embedding models on datasets X, Y, and Z.''}
-
-
-% That scope is too broad and lacks precise outcome (what is ``strong performance?''). Now consider this scope:
-
-% \textit{``Finetuning pretrained BERT on SST-2 will have higher accuracy than an LSTM trained with GloVe embeddings.''}
-
-% This scope is better because it's more specific and has an outcome that can be either supported or rejected based on your work.
-
-% \subsection{Addressed claims from the original paper}
-% \# TODO:
-% Clearly itemize the claims you are testing:
-% \begin{itemize}
-%     \item Claim 1
-%     \item Claim 2
-%     \item Claim 3
-% \end{itemize}
-
-
-% \section{Methodology}
-% \# TODO:
-% In this section you explain your approach -- did you use the author's code, did you aim to re-implement the approach from the paper description? Summarize the resources (code, documentation, GPUs) that you used. 
-
-% \subsection{Model descriptions}
-% \# TODO:
-% Describe the models used in the original paper, including the architecture, learning objective and the number of parameters.
-
-% \subsection{Data descriptions}
-% \# TODO:
-% Describe the datasets you used (with some statistics) and how you obtained them. 
-
-% \subsection{Hyperparameters}
-% \# TODO:
-% Describe how you set the hyperparameters and what the source was for their value (e.g. paper, code or your guess). 
-
-% \subsection{Implementation}
-% \# TODO:
-% Describe whether you use the existing code or write your own code, with the link to the code. Note that the github repo you link to should be public and have a clear documentation.
-
-% \subsection{Computational requirements}
-% \# TODO:
-% Provide information on computational requirements for each of your experiments. For example, the number of CPU/GPU hours and memory requirements.
-% Mention both your estimation made before running the experiments (i.e. in the proposal) and the actual resources you used to reproducing the experiments. 
-% \textbf{\textit{You'll need to think about this ahead of time, and write your code in a way that captures this information so you can later add it to this section.} }
-
-% \section{Results}
-% \# TODO:
-% Start with a high-level overview of your results. Does your work support the claims you listed in section 2.1? Keep this section as factual and precise as possible, reserve your judgement and discussion points for the next ``Discussion'' section. 
-
-% Go into each individual result you have, say how it relates to one of the claims, and explain what your result is. Logically group related results into sections. Clearly state if you have gone beyond the original paper to run additional experiments and how they relate to the original claims. 
-
-% Tips 1: Be specific and use precise language, e.g. ``we reproduced the accuracy to within 1\% of reported value, that upholds the paper's conclusion that it performs much better than baselines.'' Getting exactly the same number is in most cases infeasible, so you'll need to use your judgement call to decide if your results support the original claim of the paper. 
-
-% Tips 2: You may want to use tables and figures to demonstrate your results.
-
-% % The number of subsections for results should be the same as the number of hypotheses you are trying to verify.
-
-% \subsection{Result 1}
-% \# TODO:
-
-% \subsection{Result 2}
-% \# TODO:
-
-% \subsection{Additional results not present in the original paper}
-% \# TODO:
-% Describe any additional experiments beyond the original paper. This could include experimenting with additional datasets, exploring different methods, running more ablations, or tuning the hyperparameters. For each additional experiment, clearly describe which experiment you conducted, its result, and discussions (e.g. what is the indication of the result).
-
-% \section{Discussion}
-% \# TODO:
-% Describe larger implications of the experimental results, whether the original paper was reproducible, and if it wasn’t, what factors made it irreproducible. 
-
-% Give your judgement on if you feel the evidence you got from running the code supports the claims of the paper. Discuss the strengths and weaknesses of your approach -- perhaps you didn't have time to run all the experiments, or perhaps you did additional experiments that further strengthened the claims in the paper.
-
-% \subsection{What was easy}
-% \# TODO:
-% Describe which parts of your reproduction study were easy. E.g. was it easy to run the author's code, or easy to re-implement their method based on the description in the paper. The goal of this section is to summarize to the reader which parts of the original paper they could easily apply to their problem. 
-
-% Tips: Be careful not to give sweeping generalizations. Something that is easy for you might be difficult to others. Put what was easy in context and explain why it was easy (e.g. code had extensive API documentation and a lot of examples that matched experiments in papers). 
-
-% \subsection{What was difficult}
-% \# TODO:
-% Describe which parts of your reproduction study were difficult or took much more time than you expected. Perhaps the data was not available and you couldn't verify some experiments, or the author's code was broken and had to be debugged first. Or, perhaps some experiments just take too much time/resources to run and you couldn't verify them. The purpose of this section is to indicate to the reader which parts of the original paper are either difficult to re-use, or require a significant amount of work and resources to verify. 
-
-% Tips: Be careful to put your discussion in context. For example, don't say ``the math was difficult to follow,'' say ``the math requires advanced knowledge of calculus to follow.'' 
-
-% \subsection{Recommendations for reproducibility}
-% \# TODO:
-% Describe a set of recommendations to the original authors or others who work in this area for improving reproducibility.
-
-% \section{Communication with original authors}
-% \# TODO:
-% Document the extent of (or lack of) communication with the original authors. To make sure the reproducibility report is a fair assessment of the original research we recommend getting in touch with the original authors. You can ask authors specific questions, or if you don't have any questions you can send them the full report to get their feedback.
-
+\section{Specify if you will be re-using existing code and provide a link to it,
+or if you will implement the code yourself.}
+We plan to re-use the existing code provided by the authors of the paper for
+data preprocessing, building the needed input graphs/matrices, building the
+model architecture, and training the model for the experiment. We will author
+our own shell scripts to download, unzip, and move datasets into the appropriate
+paths. We also plan to evelop our own code to compute and evaluate model
+performance based on the test dataset following the metrics and methodology
+detailed in the paper, as well as make the required modifications to the
+existing model architecture and training code to perform the ablation studies
+mentioned in the paper as well as our own extra ablations. The code provided by
+the authors is available at \url {www.github.com/LuChang-CS/Chet}
+\cite{chet}, we will clone this as reference for our implementations described
+above.
 
 \bibliographystyle{acl_natbib}
 \bibliography{dl4h-sp23-project-team53}
@@ -201,3 +136,142 @@ a link to it, or if you will implement the code yourself.}
 
 
 \end{document}
+
+% \section{Introduction} \# TODO: A  few  sentences  placing  the  work  in
+% context. Limit it to a few paragraphs at most; your report is on reproducing a
+% piece of work, you don’t have to motivate that work. However, it should be
+% clear enough what the original paper is about and what the contribution of it
+% is.
+
+% \section{Scope of reproducibility} \# TODO: Explain the claims from the paper
+% you picked for the reproduction study and briefly motivate your choice. We
+% recommend picking the claim that is the central contribution of the paper. To
+% find what this contribution is, try to summarize the most important result of
+% the paper in 1-2 sentences, e.g. ``This paper introduces a new activation
+% function X that outperforms a similar activation function Y on tasks Z,V,W.'' 
+
+% Make the scope as specific as possible. It should be something that can be
+% supported or rejected by your data. For example, consider this scope: 
+
+% \textit{``Contextual embedding models have shown strong performance on a
+% number of tasks across NLP. We will run experiments evaluating two types of
+% contextual embedding models on datasets X, Y, and Z.''}
+
+
+% That scope is too broad and lacks precise outcome (what is ``strong
+% performance?''). Now consider this scope:
+
+% \textit{``Finetuning pretrained BERT on SST-2 will have higher accuracy than
+% an LSTM trained with GloVe embeddings.''}
+
+% This scope is better because it's more specific and has an outcome that can be
+% either supported or rejected based on your work.
+
+% \subsection{Addressed claims from the original paper} \# TODO: Clearly itemize
+% the claims you are testing: \begin{itemize} \item Claim 1 \item Claim 2 \item
+% Claim 3 \end{itemize}
+
+
+% \section{Methodology} \# TODO: In this section you explain your approach --
+% did you use the author's code, did you aim to re-implement the approach from
+% the paper description? Summarize the resources (code, documentation, GPUs)
+% that you used. 
+
+% \subsection{Model descriptions} \# TODO: Describe the models used in the
+% original paper, including the architecture, learning objective and the number
+% of parameters.
+
+% \subsection{Data descriptions} \# TODO: Describe the datasets you used (with
+% some statistics) and how you obtained them. 
+
+% \subsection{Hyperparameters} \# TODO: Describe how you set the hyperparameters
+% and what the source was for their value (e.g. paper, code or your guess). 
+
+% \subsection{Implementation} \# TODO: Describe whether you use the existing
+% code or write your own code, with the link to the code. Note that the github
+% repo you link to should be public and have a clear documentation.
+
+% \subsection{Computational requirements} \# TODO: Provide information on
+% computational requirements for each of your experiments. For example, the
+% number of CPU/GPU hours and memory requirements. Mention both your estimation
+% made before running the experiments (i.e. in the proposal) and the actual
+% resources you used to reproducing the experiments. \textbf{\textit{You'll need
+% to think about this ahead of time, and write your code in a way that captures
+% this information so you can later add it to this section.} }
+
+% \section{Results} \# TODO: Start with a high-level overview of your results.
+% Does your work support the claims you listed in section 2.1? Keep this section
+% as factual and precise as possible, reserve your judgement and discussion
+% points for the next ``Discussion'' section. 
+
+% Go into each individual result you have, say how it relates to one of the
+% claims, and explain what your result is. Logically group related results into
+% sections. Clearly state if you have gone beyond the original paper to run
+% additional experiments and how they relate to the original claims. 
+
+% Tips 1: Be specific and use precise language, e.g. ``we reproduced the
+% accuracy to within 1\% of reported value, that upholds the paper's conclusion
+% that it performs much better than baselines.'' Getting exactly the same number
+% is in most cases infeasible, so you'll need to use your judgement call to
+% decide if your results support the original claim of the paper. 
+
+% Tips 2: You may want to use tables and figures to demonstrate your results.
+
+% % The number of subsections for results should be the same as the number of
+% hypotheses you are trying to verify.
+
+% \subsection{Result 1} \# TODO:
+
+% \subsection{Result 2} \# TODO:
+
+% \subsection{Additional results not present in the original paper} \# TODO:
+% Describe any additional experiments beyond the original paper. This could
+% include experimenting with additional datasets, exploring different methods,
+% running more ablations, or tuning the hyperparameters. For each additional
+% experiment, clearly describe which experiment you conducted, its result, and
+% discussions (e.g. what is the indication of the result).
+
+% \section{Discussion} \# TODO: Describe larger implications of the experimental
+% results, whether the original paper was reproducible, and if it wasn’t, what
+% factors made it irreproducible. 
+
+% Give your judgement on if you feel the evidence you got from running the code
+% supports the claims of the paper. Discuss the strengths and weaknesses of your
+% approach -- perhaps you didn't have time to run all the experiments, or
+% perhaps you did additional experiments that further strengthened the claims in
+% the paper.
+
+% \subsection{What was easy} \# TODO: Describe which parts of your reproduction
+% study were easy. E.g. was it easy to run the author's code, or easy to
+% re-implement their method based on the description in the paper. The goal of
+% this section is to summarize to the reader which parts of the original paper
+% they could easily apply to their problem. 
+
+% Tips: Be careful not to give sweeping generalizations. Something that is easy
+% for you might be difficult to others. Put what was easy in context and explain
+% why it was easy (e.g. code had extensive API documentation and a lot of
+% examples that matched experiments in papers). 
+
+% \subsection{What was difficult} \# TODO: Describe which parts of your
+% reproduction study were difficult or took much more time than you expected.
+% Perhaps the data was not available and you couldn't verify some experiments,
+% or the author's code was broken and had to be debugged first. Or, perhaps some
+% experiments just take too much time/resources to run and you couldn't verify
+% them. The purpose of this section is to indicate to the reader which parts of
+% the original paper are either difficult to re-use, or require a significant
+% amount of work and resources to verify. 
+
+% Tips: Be careful to put your discussion in context. For example, don't say
+% ``the math was difficult to follow,'' say ``the math requires advanced
+% knowledge of calculus to follow.'' 
+
+% \subsection{Recommendations for reproducibility} \# TODO: Describe a set of
+% recommendations to the original authors or others who work in this area for
+% improving reproducibility.
+
+% \section{Communication with original authors} \# TODO: Document the extent of
+% (or lack of) communication with the original authors. To make sure the
+% reproducibility report is a fair assessment of the original research we
+% recommend getting in touch with the original authors. You can ask authors
+% specific questions, or if you don't have any questions you can send them the
+% full report to get their feedback.
