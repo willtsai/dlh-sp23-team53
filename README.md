@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ### Preprocess the data
 ```bash
-python preprocess.py
+python run_preprocess.py
 ```
 
 ### Set up and train the model
