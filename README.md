@@ -52,12 +52,5 @@ pip install -r requirements.txt
 python preprocess.py
 ```
 
-### Train the model
-```bash 
-python train.py
-```
-
-### Evaluate the model
-```bash
-python evaluate.py
-```
+### Set up and train the model
+Work through the Jupyter notebook `TODO.ipynb` to run the code.
