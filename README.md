@@ -47,10 +47,5 @@ bash initialize.sh
 pip install -r requirements.txt
 ```
 
-### Preprocess the data
-```bash
-python run_preprocess.py
-```
-
 ### Set up and train the model
-Work through the Jupyter notebook `TODO.ipynb` to run the code.
+Work through the Jupyter notebook `notebook.ipynb` to run the code.
