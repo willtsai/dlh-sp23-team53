@@ -99,7 +99,8 @@ by the authors. We will train the model and at least one listed baseline model f
 \begin{itemize}
     \item By utilizing disease combinational information and the dynamic scheme of diseases, the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than RETAIN model(one of the baseline models). 
     \item The designed global disease graph and visit subgraphs can integrate global and local context from disease combinations to inform the deep learning model, so the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than $Chet_d-$ model where dynamic part of GNN is removed in Chet.
-    \item The proposed three diagnosis roles and corresponding transition functions can extrat historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than $Chet_t-$ model where transaction functions are removed in Chet.
+    \item The proposed three diagnosis roles and corresponding transition functions can extract historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and heart failure prediction than $Chet_t-$ model where transaction functions are removed in Chet.
+    \item  The proposed three diagnosis roles and corresponding transition functions can extract historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and heart failure prediction than $Chet_{att}-$ model where attention from the final patient embedding layer is removed in Chet. This is an additional ablation study we proposed.
 \end{itemize}
 
 \section{Methodology}
