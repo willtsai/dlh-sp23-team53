@@ -1,0 +1,51 @@
+\begin{thebibliography}{6}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Cho et~al.(2014)Cho, van Merrienboer, Gulcehre, Bahdanau, Bougares,
+  Schwenk, and Bengio}]{gru}
+Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi
+  Bougares, Holger Schwenk, and Yoshua Bengio. 2014.
+\newblock Learning phrase representations using rnn encoder-decoder for
+  statistical machine translation.
+\newblock \emph{Proceedings of the 2014 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 1724--1734.
+
+\bibitem[{Goldberger et~al.(2000)Goldberger, Amaral, Glass, Hausdorff, Ivanov,
+  Mark, Mietus, Moody, Peng, and Stanley}]{physionet}
+A.~L. Goldberger, L.~A.~N. Amaral, L.~Glass, J.~M. Hausdorff, P.~Ch. Ivanov,
+  R.~G. Mark, J.~E. Mietus, G.~B. Moody, C.-K. Peng, and H.~E. Stanley. 2000.
+\newblock Physiobank, physiotoolkit, and physionet: Components of a new
+  research resource for complex physiologic signals.
+\newblock \emph{Circulation}, 101(23):e215--e220.
+\newblock Circulation Electronic Pages:
+  http://circ.ahajournals.org/content/101/23/e215.full PMID:1085218; doi:
+  10.1161/01.CIR.101.23.e215.
+
+\bibitem[{Johnson et~al.(2023{\natexlab{a}})Johnson, Bulgarelli, Pollard,
+  Horng, Celi, and Mark}]{mimic4}
+Alistair Johnson, Lucas Bulgarelli, Tom Pollard, Steven Horng, Leo~Anthony
+  Celi, and Roger Mark. 2023{\natexlab{a}}.
+\newblock \href {https://doi.org/10.13026/6MM1-EK67} {Mimic-iv}.
+
+\bibitem[{Johnson et~al.(2023{\natexlab{b}})Johnson, Pollard, and
+  Mark}]{mimic3}
+Alistair Johnson, Tom Pollard, and Roger Mark. 2023{\natexlab{b}}.
+\newblock \href {https://doi.org/10.13026/C2XW26} {Mimic-iii clinical
+  database}.
+
+\bibitem[{Lu et~al.(2022)Lu, Han, and Ning}]{chet}
+Chang Lu, Tian Han, and Yue Ning. 2022.
+\newblock \href {https://doi.org/10.1609/aaai.v36i4.20380} {Context-aware
+  health event prediction via transition functions on dynamic disease graphs}.
+\newblock \emph{Proceedings of the AAAI Conference on Artificial Intelligence},
+  36(4):4567–4574.
+
+\bibitem[{Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones,
+  Gomez, Kaiser, and Polosukhin}]{dp_attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin. 2017.
+\newblock Attention is all you need.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  30:5998--6008.
+
+\end{thebibliography}

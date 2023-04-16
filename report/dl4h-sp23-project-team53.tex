@@ -1,17 +1,14 @@
 %
-% File proposal-team53.tex
+% File dl4h-sp23-project-team53.tex
 %
-%% Based on the style files for EMNLP 2020, which were
-%% Based on the style files for ACL 2020, which were
-%% Based on the style files for ACL 2018, NAACL 2018/19, which were
-%% Based on the style files for ACL-2015, with some improvements
-%%  taken from the NAACL-2016 style
-%% Based on the style files for ACL-2014, which were, in turn,
-%% based on ACL-2013, ACL-2012, ACL-2011, ACL-2010, ACL-IJCNLP-2009,
-%% EACL-2009, IJCNLP-2008...
-%% Based on the style files for EACL 2006 by 
-%%e.agirre@ehu.es or Sergi.Balari@uab.es
-%% and that of ACL 08 by Joakim Nivre and Noah Smith
+%% Based on the style files for EMNLP 2020, which were % Based on the style
+%files for ACL 2020, which were % Based on the style files for ACL 2018, NAACL
+%2018/19, which were % Based on the style files for ACL-2015, with some
+%improvements %  taken from the NAACL-2016 style % Based on the style files for
+%ACL-2014, which were, in turn, % based on ACL-2013, ACL-2012, ACL-2011,
+%ACL-2010, ACL-IJCNLP-2009, % EACL-2009, IJCNLP-2008... % Based on the style
+%files for EACL 2006 by %e.agirre@ehu.es or Sergi.Balari@uab.es % and that of
+%ACL 08 by Joakim Nivre and Noah Smith
 
 \documentclass[11pt,a4paper,fleqn]{article}
 \usepackage[hyperref]{acl2021}
@@ -22,34 +19,29 @@
 \usepackage{float}
 \renewcommand{\UrlFont}{\ttfamily\small}
 
-% This is not strictly necessary, and may be commented out,
-% but it will improve the layout of the manuscript,
-% and will typically save some space.
+% This is not strictly necessary, and may be commented out, but it will improve
+% the layout of the manuscript, and will typically save some space.
 \usepackage{microtype}
 
 \aclfinalcopy
 %\def\aclpaperid{***} %  Enter the acl Paper ID here
 
-%\setlength\titlebox{5cm}
-% You can expand the titlebox if you need extra space
-% to show all the authors. Please do not make the titlebox
-% smaller than 5cm (the original size); we will check this
-% in the camera-ready version and ask you to change it back.
+%\setlength\titlebox{5cm} You can expand the titlebox if you need extra space to
+% show all the authors. Please do not make the titlebox smaller than 5cm (the
+% original size); we will check this in the camera-ready version and ask you to
+% change it back.
 
 % Content lightly modified from original work by Jesse Dodge and Noah Smith
 
 
 \newcommand\BibTeX{B\textsc{ib}\TeX}
 
-\title{
-  Reproducing Context-aware Health Event Prediction via \\
+\title{ Reproducing Context-aware Health Event Prediction via \\
   Transition Functions on Dynamic Disease Graphs \cite{chet} \\
-  CS598 DL4H Spring 2023
-  }
+  CS598 DL4H Spring 2023 }
 
 \author{Shiyu (Sherry) Li and Wei-Lun (Will) Tsai \\
-  \texttt{\{shiyuli2, wltsai2\}@illinois.edu}
-  \\[2em]
+  \texttt{\{shiyuli2, wltsai2\}@illinois.edu} \\[2em]
   Group ID: 53\\
   Paper ID: 28\\
   Presentation link: \url{\#TODO} \\
@@ -58,85 +50,109 @@
 \begin{document}
 \maketitle
 
-% All sections are mandatory.
-% Keep in mind that your page limit is 8, excluding references.
-% For specific grading rubrics, please see the project instruction.
+% All sections are mandatory. Keep in mind that your page limit is 8, excluding
+% references. For specific grading rubrics, please see the project instruction.
 
 \section{Introduction}
-In this report, we will focus on our reproduction study for \textit{Context-aware Health Event Prediction via Transition 
-Functions on Dynamic Disease Graphs} \cite{chet}.
-This paper propose a new deep learning model called Chet
-(\textbf{c}ontext-aware \textbf{h}ealth \textbf{e}vent prediction via
-\textbf{t}ransition functions on dynamic disease graphs) that leverages the
-relationship between diseases and how they develop over time to predict future
-outcomes and diagnoses. Existing research on deep learning models for
-classification and prediction of diseases based on longitudinal EHR data have
-modeled disease diagnoses as independent events in their respective visits.
+In this report, we will focus on our reproduction study for
+\textit{Context-aware Health Event Prediction via Transition Functions on
+Dynamic Disease Graphs} \cite{chet}. This paper propose a new deep learning
+model called Chet (\textbf{c}ontext-aware \textbf{h}ealth \textbf{e}vent
+prediction via \textbf{t}ransition functions on dynamic disease graphs) that
+leverages the relationship between diseases and how they develop over time to
+predict future outcomes and diagnoses. Existing research on deep learning models
+for classification and prediction of diseases based on longitudinal EHR data
+have modeled disease diagnoses as independent events in their respective visits.
 However, intuition and data indicate that there are in fact hidden patterns
 within the combinations of disease diagnoses that may be useful for predicting
 future outcomes for patients, but yet have not been leveraged in existing
 best-in-class healthcare deep learning models. The Chet model is able to learn
 how diagnosed diseases develop over the course of each patient's doctor visits
 and then utilize this learned disease combination context to predict future
-outcomes and diagnoses. 
-The most innovative part of the approach is the design to include both
-disease combinational information and the dynamic scheme of disease into the model. To include 
-disease combinational information, the paper constructed a weighted disease combination
-based on the entire longitudinal EHR data globally and also a disease subgraph based on the 
-specific visit locally. To include dynamic scheme of diseases, the paper utilized a disease-level
-temporal learning with multiple diagnosis roles and corresponding transition functions to extract
-historical contexts.
+outcomes and diagnoses. The most innovative part of the approach is the design
+to include both disease combinational information and the dynamic scheme of
+disease into the model. To include disease combinational information, the paper
+constructed a weighted disease combination based on the entire longitudinal EHR
+data globally and also a disease subgraph based on the specific visit locally.
+To include dynamic scheme of diseases, the paper utilized a disease-level
+temporal learning with multiple diagnosis roles and corresponding transition
+functions to extract historical contexts.
 
 \section{Scope of reproducibility}
 In our reproduction study, we will use the same methodology as proposed by the
-authors for data selection, cleaning, and preprocessing. Specifically, we will join the MIMIC-III \cite{mimic3} and MIMIC-IV
-\cite{mimic4} datasets along the same overlapping time ranges that the authors
-describe and split training/validation/test sets randomly using the same ratios
-they used. We will build the diagnosis graphs and calculate the adjacency
-matrices for their corresponding subgraphs using the same methodology described
-by the authors. We will train the model and at least one listed baseline model for diagnosis prediction and hearth failure prediction respectively and compare the performance.
+authors for data selection, cleaning, and preprocessing. Specifically, we will
+join the MIMIC-III \cite{mimic3} and MIMIC-IV \cite{mimic4} datasets along the
+same overlapping time ranges that the authors describe and split
+training/validation/test sets randomly using the same ratios they used. We will
+build the diagnosis graphs and calculate the adjacency matrices for their
+corresponding subgraphs using the same methodology described by the authors. We
+will train the model and at least one listed baseline model for diagnosis
+prediction and hearth failure prediction respectively and compare the
+performance.
 \subsection{Addressed claims from the original paper}
-% \# TODO:
-% Clearly itemize the claims you are testing:
+% \# TODO: Clearly itemize the claims you are testing:
 \begin{itemize}
-    \item By utilizing disease combinational information and the dynamic scheme of diseases, the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than RETAIN model(one of the baseline models). 
-    \item The designed global disease graph and visit subgraphs can integrate global and local context from disease combinations to inform the deep learning model, so the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than $Chet_d-$ model where dynamic part of GNN is removed in Chet.
-    \item The proposed three diagnosis roles and corresponding transition functions can extract historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and heart failure prediction than $Chet_t-$ model where transaction functions are removed in Chet.
-    \item  The proposed three diagnosis roles and corresponding transition functions can extract historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and heart failure prediction than $Chet_{att}-$ model where attention from the final patient embedding layer is removed in Chet. This is an additional ablation study we proposed.
+    \item By utilizing disease combinational information and the dynamic scheme
+    of diseases, the Chet model has higher accuracy for diagnosis prediction and
+    hearth failure prediction than RETAIN model(one of the baseline models). 
+    \item The designed global disease graph and visit subgraphs can integrate
+    global and local context from disease combinations to inform the deep
+    learning model, so the Chet model has higher accuracy for diagnosis
+    prediction and hearth failure prediction than $Chet_d-$ model where dynamic
+    part of GNN is removed in Chet.
+    \item The proposed three diagnosis roles and corresponding transition
+    functions can extract historical context and learn the disease development
+    schemes, so the Chet model has higher accuracy for diagnosis prediction and
+    heart failure prediction than $Chet_t-$ model where transaction functions
+    are removed in Chet.
+    \item  The proposed three diagnosis roles and corresponding transition
+    functions can extract historical context and learn the disease development
+    schemes, so the Chet model has higher accuracy for diagnosis prediction and
+    heart failure prediction than $Chet_{att}-$ model where attention from the
+    final patient embedding layer is removed in Chet. This is an additional
+    ablation study we proposed.
 \end{itemize}
 
 \section{Methodology}
-In this section , we demonstrate the details of the model used in the original paper, our implementation approach as well as necessary computational resource.
+In this section , we demonstrate the details of the model used in the original
+paper, our implementation approach as well as necessary computational resource.
 \subsection{Model descriptions}
-The Chet model can be decomposed into three layers: graph layer, transition layer and embedding layer.
+The Chet model can be decomposed into three layers: graph layer, transition
+layer and embedding layer.
 
 \subsubsection{Graph Layer}
-The first layer is a dynamic graph learning layer to extract both local and global contexts for diagnosis and neighbors in visit t using a memory-efficient calculation:
+The first layer is a dynamic graph learning layer to extract both local and
+global contexts for diagnosis and neighbors in visit t using a memory-efficient
+calculation:
 \begin{equation}
   Z_D^t =m^t \odot (M + A(m^t\odot M) + A(n^t\odot N))
 \end{equation}
 \begin{equation}
   Z_N^t =n^t \odot (N + A(n^t\odot N) + A(m^t\odot M))
 \end{equation}
-Where M,N represent embedding matrices for diagnoses and neighbors, A is the static adjacency matrix, 
-$m^t$ and $n^t$ represent diagnoses code and neighbors code in t visit, $Z_D^t$ is aggregated diagnosis local context and diagnosis global context and $Z_N^t$ is aggregated neighbor global context. Finally, the GNN outputs are calculated with a fully connected layer with LeakyReLU as the activation function from $Z_D^t$ and $Z_N^t$.
+Where M,N represent embedding matrices for diagnoses and neighbors, A is the
+static adjacency matrix, $m^t$ and $n^t$ represent diagnoses code and neighbors
+code in t visit, $Z_D^t$ is aggregated diagnosis local context and diagnosis
+global context and $Z_N^t$ is aggregated neighbor global context. Finally, the
+GNN outputs are calculated with a fully connected layer with LeakyReLU as the
+activation function from $Z_D^t$ and $Z_N^t$.
 \begin{equation}
   H^t_{D,N}=\textrm{LeakyReLU}(Z^t_{D,N}W)\in\mathcal{R}^{d\times s'}
 \end{equation}
 
 \subsubsection{Transition Layer}
-The Transition(second) Layer is to learn the disease development schemes, it takes the vector of diagnosis codes $m^t$ per visit as
-input and partitions it into three disjoint vectors: (1) persistent diseases 
-$m_p^t$ representing diagnoses in visit $t$ that are also present in visit $t-1$, 
-(2) emerging neighbors $m_{en}^t$ representing diagnoses in visit $t$
-that are neighbors in visit $t-1$, (3) emerging unrelated diseases 
-$m_{eu}^t$ representing diagnoses in visit $t$ that are unrelated diseases in
-visit $t-1$. The layer is composed of three transition functions
-corresponding to each partition of $m^t$ and are designed to extract
-historical context from previous visits to compute the hidden values. 
-​
-The transition function for calculating the hidden values for both $m_{en}^t$
-and $m_{eu}^t$ is a scaled dot-product attention \cite{dp_attention}: 
+The Transition(second) Layer is to learn the disease development schemes, it
+takes the vector of diagnosis codes $m^t$ per visit as input and partitions it
+into three disjoint vectors: (1) persistent diseases $m_p^t$ representing
+diagnoses in visit $t$ that are also present in visit $t-1$, (2) emerging
+neighbors $m_{en}^t$ representing diagnoses in visit $t$ that are neighbors in
+visit $t-1$, (3) emerging unrelated diseases $m_{eu}^t$ representing diagnoses
+in visit $t$ that are unrelated diseases in visit $t-1$. The layer is composed
+of three transition functions corresponding to each partition of $m^t$ and are
+designed to extract historical context from previous visits to compute the
+hidden values. The transition function for calculating the hidden values for
+both $m_{en}^t$ and $m_{eu}^t$ is a scaled dot-product attention
+\cite{dp_attention}: 
 
 \begin{equation}
 \begin{tabular}{l}
@@ -150,73 +166,101 @@ Attn \\ (Q, K, V)
 \end{equation}
 \normalsize
 Where $a$ is the attention size, $W_q$, $W_k$, $W_v$ are the weight matrices.
-For $h_{en}^t$, $Q$ and $K$ are the hidden neighbor embeddings $H_N^{t-1}$.
-For $h_{eu}^t$, $Q$ and $K$ are the universal embeddings of unrelated diseases $R$.
+For $h_{en}^t$, $Q$ and $K$ are the hidden neighbor embeddings $H_N^{t-1}$. For
+$h_{eu}^t$, $Q$ and $K$ are the universal embeddings of unrelated diseases $R$.
 For both $h_{en}^t$ and $h_{eu}^t$, $V$ is the diagnosis embeddings $H^{t}_D$.
-​
-The transition function for calculating the hidden values for $m_p^t$ is a modified 
-gated recurrent unit (M-GRU) \cite{gru}:
+The transition function for calculating the hidden values for $m_p^t$ is a
+modified gated recurrent unit (M-GRU) \cite{gru}:
 
 \begin{equation}
   h_p^t = {M\verb|-|GRU}(m_p^t \odot H_D^t , h_{en}^t, h_{eu}^t, h_p^{t-1})
 \end{equation}
 
-Finally, to calculate the visit embedding $v^t$, we apply max pooling to the 
+Finally, to calculate the visit embedding $v^t$, we apply max pooling to the
 transition output of the three partitions, which are all contained in $h_p^t$:
 \begin{equation}
   v^t = \verb|max_pooling|(h_p^t).
 \end{equation}
 
 \subsubsection{Embedding Layer}
-The third layer is an embedding layer with a location-based attention to calculate the final hidden representation of all visits embeddings.
+The third layer is an embedding layer with a location-based attention to
+calculate the final hidden representation of all visits embeddings.
 \begin{equation}
   \alpha=\textrm{softmax}([v^1,v^2,\dots, v^T]W_\alpha)\in \mathcal{R}^T
 \end{equation}
 \begin{equation}
   o=\alpha[v^1,v^2,\dots, v^T]^T\in\mathcal{R}^p
 \end{equation}
-Where $W_\alpha$ is a context vector for attention, $\alpha$ is the attention score for visits and o represents the final patient embedding.
+Where $W_\alpha$ is a context vector for attention, $\alpha$ is the attention
+score for visits and o represents the final patient embedding.
 
 \subsection{Data descriptions}
-For their reproduction study, we will use the MIMIC-III \cite{mimic3} and MIMIC-IV
-\cite{mimic4} datasets downloaded from PhysioNet\cite{physionet}. for training/validation/testing, same as the original paper. In MIMIC-III data, there are 7493 patients in total from 2001 to 2012 with an average of 2.6 visits per patient and an average of 13.06 diagnose codes per visit. We randomly split the data into training set, validation set and test set with a size of 6000, 493 and 1000 respectively. In MIMIC-IV data, there are 10000 patients in total from 2013 to 2019 with an average of 3.79 visits per patient and an average of 13.51 diagnose codes per visit. We split the data into training set, validation set and test set with a size of 8000, 1000 and 1000 respectively. 
+For their reproduction study, we will use the MIMIC-III \cite{mimic3} and
+MIMIC-IV \cite{mimic4} datasets downloaded from PhysioNet\cite{physionet}. for
+training/validation/testing, same as the original paper. In MIMIC-III data,
+there are 7493 patients in total from 2001 to 2012 with an average of 2.6 visits
+per patient and an average of 13.06 diagnose codes per visit. We randomly split
+the data into training set, validation set and test set with a size of 6000, 493
+and 1000 respectively. In MIMIC-IV data, there are 10000 patients in total from
+2013 to 2019 with an average of 3.79 visits per patient and an average of 13.51
+diagnose codes per visit. We split the data into training set, validation set
+and test set with a size of 8000, 1000 and 1000 respectively. 
 
 \subsection{Hyperparameters}
-\# TODO:
-Describe how you set the hyperparameters and what the source was for their value (e.g. paper, code or your guess). 
+\# TODO: Describe how you set the hyperparameters and what the source was for
+their value (e.g. paper, code or your guess). 
 
 \subsection{Implementation}
-In our preliminary reproduction implementation, we built a \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/notebook.ipynb}{python notebook} to build a complete flow including hyperparameters setting, 
-data preprocessing, data loading, model building, model training and evaluation. For now, we kept the same hyperparameters as the original paper and reused the \href{https://github.com/LuChang-CS/Chet}{author's code} in data preprocessing.
-Our major code efforts went into model rebuilding and the training/validation flow. In training/validation part, we built our own training and validation method to streamline the training, validation and test process while reusing the existing 
-schedulers and metrics. In model rebuilding part, we tried to follow closely with the model structure and all the equations in the paper step by step.
+In our preliminary reproduction implementation, we built a
+\href{https://github.com/willtsai/dlh-sp23-team53/blob/main/notebook.ipynb}{python
+notebook} to build a complete flow including hyperparameters setting, data
+preprocessing, data loading, model building, model training and evaluation. For
+now, we kept the same hyperparameters as the original paper and reused the
+\href{https://github.com/LuChang-CS/Chet}{author's code} in data preprocessing.
+Our major code efforts went into model rebuilding and the training/validation
+flow. In training/validation part, we built our own training and validation
+method to streamline the training, validation and test process while reusing the
+existing schedulers and metrics. In model rebuilding part, we tried to follow
+closely with the model structure and all the equations in the paper step by
+step.
 
 \subsection{Computational requirements}
-All code are implemented with Python and PyTorch. For additional package and version details, please refer to \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/requirements.txt}{requirements.txt}. In our initial investigation, it took around 10 minutes for data preprocessing and approximately 96 hours to complete 
-total 200 epoches of training for a combined MIMIC-III/MIMIC-IV training set on our local machine with 16GB memory and Apple M1 PRO chip. In our reproduction implementation, it took 10 hours to actual finish 10 epoches of training for a combined MIMIC-III/MIMIC-IV training set on the same machine to get an initial result. 
-In order to unblock the computational constraints we have with the CPUs on our local machine, we would like to further explore the following computational resources:
+All code are implemented with Python and PyTorch. For additional package and
+version details, please refer to
+\href{https://github.com/willtsai/dlh-sp23-team53/blob/main/requirements.txt}{requirements.txt}.
+In our initial investigation, it took around 10 minutes for data preprocessing
+and approximately 96 hours to complete total 200 epoches of training for a
+combined MIMIC-III/MIMIC-IV training set on our local machine with 16GB memory
+and Apple M1 PRO chip. In our reproduction implementation, it took 10 hours to
+actual finish 10 epoches of training for a combined MIMIC-III/MIMIC-IV training
+set on the same machine to get an initial result. In order to unblock the
+computational constraints we have with the CPUs on our local machine, we would
+like to further explore the following computational resources:
 \begin{itemize}
-  \item We will try to use the available GPUs(16 cores) on one of our local machines for the model training.
-  \item We will explore with Google Colab to utilize their free standard GPUs(NVIDIA T4 Tensor Core GPUs) for the model training.
-  \item We will explore with Microsoft Azure for available Virtual Machines with GPU using the available credit we have.
+  \item We will try to use the available GPUs(16 cores) on one of our local
+  machines for the model training.
+  \item We will explore with Google Colab to utilize their free standard
+  GPUs(NVIDIA T4 Tensor Core GPUs) for the model training.
+  \item We will explore with Microsoft Azure for available Virtual Machines with
+  GPU using the available credit we have.
 \end{itemize}
 
 \section{Results}
 % Start with a high-level overview of your results. Does your work support the
 % claims you listed in section 2.1? Keep this section as factual and precise as
 % possible, reserve your judgement and discussion points for the next
-% ``Discussion'' section. 
-% Go into each individual result you have, say how it relates to one of the
-% claims, and explain what your result is. Logically group related results into
-% sections. Clearly state if you have gone beyond the original paper to run
-% additional experiments and how they relate to the original claims. 
-% Tips 1: Be specific and use precise language, e.g. ``we reproduced the accuracy
-% to within 1\% of reported value, that upholds the paper's conclusion that it
-% performs much better than baselines.'' Getting exactly the same number is in
-% most cases infeasible, so you'll need to use your judgement call to decide if
-% your results support the original claim of the paper. 
-% Tips 2: You may want to use tables and figures to demonstrate your results.
-% The number of subsections for results should be the same as the number of hypotheses you are trying to verify.
+% ``Discussion'' section. Go into each individual result you have, say how it
+% relates to one of the claims, and explain what your result is. Logically group
+% related results into sections. Clearly state if you have gone beyond the
+% original paper to run additional experiments and how they relate to the
+% original claims. Tips 1: Be specific and use precise language, e.g. ``we
+% reproduced the accuracy to within 1\% of reported value, that upholds the
+% paper's conclusion that it performs much better than baselines.'' Getting
+% exactly the same number is in most cases infeasible, so you'll need to use
+% your judgement call to decide if your results support the original claim of
+% the paper. Tips 2: You may want to use tables and figures to demonstrate your
+% results. The number of subsections for results should be the same as the
+% number of hypotheses you are trying to verify.
 
 We evaluated prediction performance for our models against the test datasets.
 Our preliminary results are from training each of our reproduced Chet models one
@@ -225,72 +269,88 @@ our more limited runs, we have found that our Chet model performance results
 align more closely with results from the original paper for the heart failure
 prediction task than for the diagnosis prediction task. Additionally, we also
 make the same observation as the original paper that MIMIC-IV trained models
-outperform MIMIC-III trained models in terms of AUC and F1 score. Since we have not yet reproduced results from any of the baseline models, we are not
-in a position to determine whether our work supports the claims from the original
-paper that Chet outperforms all the baseline models.
-The plan for finalizing our experiment results is as follows: 
+outperform MIMIC-III trained models in terms of AUC and F1 score. Since we have
+not yet reproduced results from any of the baseline models, we are not in a
+position to determine whether our work supports the claims from the original
+paper that Chet outperforms all the baseline models. The plan for finalizing our
+experiment results is as follows: 
 \begin{itemize}
-    \item Retrain the reproduced Chet model for \emph{diagnosis} prediction using as
-    close to the original 200 epochs as we are computationally able to, then
-    collect, analyze, and compare the results.
-    \item Retrain the reproduced Chet model for \emph{heart failure} prediction using
-    as close to the original 200 epochs as we are computationally able to, then
-    collect, analyze, and compare the results.
+    \item Retrain the reproduced Chet model for \emph{diagnosis} prediction
+    using as close to the original 200 epochs as we are computationally able to,
+    then collect, analyze, and compare the results.
+    \item Retrain the reproduced Chet model for \emph{heart failure} prediction
+    using as close to the original 200 epochs as we are computationally able to,
+    then collect, analyze, and compare the results.
     \item Reproduce at least one of the baseline models (likely RETAIN) to
     compare reproduced Chet prediction results against those from a reproduced
     baseline model.
     \item Investigate the discrepancy in the number of parameters between our
-    reproduced Chet models and the original Chet models, making any necessary 
+    reproduced Chet models and the original Chet models, making any necessary
     changes to our code as needed.
-    \item Implement at least one of the ablation studies from the original
-    paper - collect, analyze, and compare the results.
+    \item Implement at least one of the ablation studies from the original paper
+    - collect, analyze, and compare the results.
     \item Implement an additional ablation study of our own - collect, analyze,
     and compare the results.
 \end{itemize}
 
 \subsection{Diagnosis Prediction Results}
-Model performance results for the diagnosis prediction task from our preliminary experiments are summarized in Table~\ref{tab:diag}. 
-Compared to the 200-epoch Chet model performance results from the original paper, our reproduced 10-epoch Chet 
-model performed only approximately half as well in terms of F1 score and approximately 73\% as well in terms of R@10 and R@20, 
-across both MIMIC-III and MIMIC-IV datasets. We suspect that this large discrepancy in performance is due to 
-having trained our reproduced Chet models for only 10 epochs instead of the 200 epochs used in the original paper.
-Interestingly, for the Chet model, the number of parameters in our experiments were approximately 58\% of the number of parameters in the 
-original experiment despite using the same hyperparameters and datasets.
+Model performance results for the diagnosis prediction task from our preliminary
+experiments are summarized in Table~\ref{tab:diag}. Compared to the 200-epoch
+Chet model performance results from the original paper, our reproduced 10-epoch
+Chet model performed only approximately half as well in terms of F1 score and
+approximately 73\% as well in terms of R@10 and R@20, across both MIMIC-III and
+MIMIC-IV datasets. We suspect that this large discrepancy in performance is due
+to having trained our reproduced Chet models for only 10 epochs instead of the
+200 epochs used in the original paper. Interestingly, for the Chet model, the
+number of parameters in our experiments were approximately 58\% of the number of
+parameters in the original experiment despite using the same hyperparameters and
+datasets.
 \begin{table*}[ht]
   \centering
   \begin{tabular}{|ccccc|cccc|} \hline
-    {Model} & \multicolumn{4}{c|}{MIMIC-III} & \multicolumn{4}{c|}{MIMIC-IV} \\ \cline{2-9} 
-    & w-F1 & R@10 & R@20 & \# Params & w-F1 & R@10 & R@20 & \# Params \\ \hline
-    {Repro Baseline} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\ \cline{1-9}
-    {Repro Chet} & 12.89 & 20.19 & 28.96 & 1.22M & 14.21 & 21.64 & 30.32 & 1.49MM \\ \cline{1-9}
-    {Original Chet} & 22.63 & 28.64 & 37.87 & 2.12M & 26.35 & 30.28 & 38.69 & 2.59M \\ \cline{1-9}
+    {Model} & \multicolumn{4}{c|}{MIMIC-III} & \multicolumn{4}{c|}{MIMIC-IV} \\
+    \cline{2-9} & w-F1 & R@10 & R@20 & \# Params & w-F1 & R@10 & R@20 & \#
+    Params \\ \hline
+    {Repro Baseline} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO &
+    \#TODO & \#TODO \\ \cline{1-9} {Repro Chet} & 12.89 & 20.19 & 28.96 & 1.22M
+    & 14.21 & 21.64 & 30.32 & 1.49MM \\ \cline{1-9} {Original Chet} & 22.63 &
+    28.64 & 37.87 & 2.12M & 26.35 & 30.28 & 38.69 & 2.59M \\ \cline{1-9}
   \end{tabular}
   \caption{Diagnosis prediction results on MIMIC-III and MIMIC-IV using w-F1 (\%) and R@k (\%).}
   \label{tab:diag}
   \end{table*}
 
 \subsection{Heart Failure Prediction Results}
-Model performance results for the heart failure prediction task from our preliminary experiments are summarized in Table~\ref{tab:hf}. 
-Compared to the 200-epoch Chet model performance results from the original paper, our reproduced 10-epoch Chet 
-model achieved similar levels of performance in terms of AUC and F1 score, across both MIMIC-III and MIMIC-IV datasets.
-This is suprising given that we trained on 95\% less epochs than the original paper, but we suspect that the decent prediction performance 
-can be attributed to the fact that the heart failure prediction task is a much easier task than the diagnosis prediction task. Intuitively, 
-predicting a general diagnosis is much more ambiguous and involves more complexity than predicting a single specific condition such as heart failure. 
-Indeed, we observe in the original paper that the prediction performance for heart failure is much better than that of diagnosis prediction, across all 
-baseline models and Chet, for both MIMIC-III and MIMIC-IV datasets.
-Similar to our diagnosis prediction Chet models, we observe that the number of parameters in our experiments were approximately 68\% of the number of parameters in the 
-original experiment despite using the same hyperparameters and datasets. We would have expected the space complexity of our Chet models to be 
-the same of the original Chet models. We think that this difference might be due to how we are computing data embeddings in the model layers 
-and plan to investigate this further to hopefully resolve this discrepancy.
+Model performance results for the heart failure prediction task from our
+preliminary experiments are summarized in Table~\ref{tab:hf}. Compared to the
+200-epoch Chet model performance results from the original paper, our reproduced
+10-epoch Chet model achieved similar levels of performance in terms of AUC and
+F1 score, across both MIMIC-III and MIMIC-IV datasets. This is suprising given
+that we trained on 95\% less epochs than the original paper, but we suspect that
+the decent prediction performance can be attributed to the fact that the heart
+failure prediction task is a much easier task than the diagnosis prediction
+task. Intuitively, predicting a general diagnosis is much more ambiguous and
+involves more complexity than predicting a single specific condition such as
+heart failure. Indeed, we observe in the original paper that the prediction
+performance for heart failure is much better than that of diagnosis prediction,
+across all baseline models and Chet, for both MIMIC-III and MIMIC-IV datasets.
+Similar to our diagnosis prediction Chet models, we observe that the number of
+parameters in our experiments were approximately 68\% of the number of
+parameters in the original experiment despite using the same hyperparameters and
+datasets. We would have expected the space complexity of our Chet models to be
+the same of the original Chet models. We think that this difference might be due
+to how we are computing data embeddings in the model layers and plan to
+investigate this further to hopefully resolve this discrepancy.
 \begin{table*}[ht]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-{Model} & \multicolumn{3}{c|}{MIMIC-III} & \multicolumn{3}{c|}{MIMIC-IV} \\ \cline{2-7} 
- & AUC & F1 & \# Params & AUC & F1 & \# Params \\ \hline
-{Repro Baseline Models} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\ \cline{1-7}
-{Repro Chet} & 84.16 & 69.32 & 0.47M & 94.00 & 75.14 & 0.58M \\ \cline{1-7}
-{Original Chet} & 86.14 & 73.08 & 0.68M & 90.83 & 71.14 & 0.88M \\ \cline{1-7}
+{Model} & \multicolumn{3}{c|}{MIMIC-III} & \multicolumn{3}{c|}{MIMIC-IV} \\
+ \cline{2-7} & AUC & F1 & \# Params & AUC & F1 & \# Params \\ \hline
+{Repro Baseline Models} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\
+\cline{1-7} {Repro Chet} & 84.16 & 69.32 & 0.47M & 94.00 & 75.14 & 0.58M \\
+\cline{1-7} {Original Chet} & 86.14 & 73.08 & 0.68M & 90.83 & 71.14 & 0.88M \\
+\cline{1-7}
 \end{tabular}
 \caption{Heart failure prediction results on MIMIC-III and MIMIC-IV using AUC (\%) and F1 (\%).}
 \label{tab:hf}
@@ -298,14 +358,14 @@ and plan to investigate this further to hopefully resolve this discrepancy.
 
 \subsection{Additional results not present in the original paper}
 We plan to complete at least one ablation study from the original paper as well
-as an additional ablation experiment of removing the attention from the final patient
-embedding layer (not part of the original paper). We will include our results
-for these additional experiments in the final report.
-% Describe any additional experiments beyond the original paper. This
-% could include experimenting with additional datasets, exploring different
-% methods, running more ablations, or tuning the hyperparameters. For each
-% additional experiment, clearly describe which experiment you conducted, its
-% result, and discussions (e.g. what is the indication of the result).
+as an additional ablation experiment of removing the attention from the final
+patient embedding layer (not part of the original paper). We will include our
+results for these additional experiments in the final report.
+% Describe any additional experiments beyond the original paper. This could
+% include experimenting with additional datasets, exploring different methods,
+% running more ablations, or tuning the hyperparameters. For each additional
+% experiment, clearly describe which experiment you conducted, its result, and
+% discussions (e.g. what is the indication of the result).
 
 \section{Discussion}
 \# TODO:
