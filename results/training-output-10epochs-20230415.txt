@@ -1,0 +1,128 @@
+training for m task on mimic3 dataset:
+1223574
+Epoch 1 / 10:
+    Step 188 / 188, LR: 0.01, time cost: 3m56.0s, loss: 1609.379999235
+    Evaluation: loss: 142.9908 --- f1_score: 0.1114 --- top_k_recall: 0.2015, 0.2790, 0.3376, 0.3731  --- occurred: 0.1041, 0.1324, 0.1498, 0.1610  --- not occurred: 0.0974, 0.1465, 0.1879, 0.2121
+Epoch 2 / 10:
+    Step 188 / 188, LR: 0.01, time cost: 3m58.3s, loss: 1559.037878958
+    Evaluation: loss: 131.3423 --- f1_score: 0.1177 --- top_k_recall: 0.1993, 0.2873, 0.3439, 0.3883  --- occurred: 0.0976, 0.1300, 0.1469, 0.1623  --- not occurred: 0.1017, 0.1572, 0.1970, 0.2260
+Epoch 3 / 10:
+    Step 188 / 188, LR: 0.01, time cost: 4m0.6s, loss: 1558.8047047489
+    Evaluation: loss: 132.0773 --- f1_score: 0.1288 --- top_k_recall: 0.2117, 0.2925, 0.3434, 0.3879  --- occurred: 0.1105, 0.1338, 0.1507, 0.1648  --- not occurred: 0.1011, 0.1587, 0.1927, 0.2230
+Epoch 4 / 10:
+    Step 188 / 188, LR: 0.01, time cost: 3m58.6s, loss: 1558.075757623
+    Evaluation: loss: 126.7844 --- f1_score: 0.1473 --- top_k_recall: 0.2209, 0.3145, 0.3767, 0.4178  --- occurred: 0.1176, 0.1525, 0.1727, 0.1856  --- not occurred: 0.1033, 0.1620, 0.2040, 0.2322
+Epoch 5 / 10:
+    Step 188 / 188, LR: 0.001, time cost: 3m58.7s, loss: 1556.603737678
+    Evaluation: loss: 126.2151 --- f1_score: 0.1523 --- top_k_recall: 0.2361, 0.3286, 0.3883, 0.4349  --- occurred: 0.1240, 0.1575, 0.1765, 0.1901  --- not occurred: 0.1121, 0.1711, 0.2118, 0.2448
+Epoch 6 / 10:
+    Step 188 / 188, LR: 0.001, time cost: 3m56.3s, loss: 1555.929898553
+    Evaluation: loss: 129.2610 --- f1_score: 0.1536 --- top_k_recall: 0.2358, 0.3267, 0.3906, 0.4388  --- occurred: 0.1257, 0.1572, 0.1796, 0.1923  --- not occurred: 0.1101, 0.1695, 0.2110, 0.2465
+Epoch 7 / 10:
+    Step 188 / 188, LR: 0.001, time cost: 3m59.6s, loss: 1556.270303834
+    Evaluation: loss: 123.0844 --- f1_score: 0.1568 --- top_k_recall: 0.2392, 0.3289, 0.3931, 0.4403  --- occurred: 0.1245, 0.1580, 0.1789, 0.1942  --- not occurred: 0.1147, 0.1710, 0.2143, 0.2461
+Epoch 8 / 10:
+    Step 188 / 188, LR: 0.001, time cost: 4m4.0s, loss: 1555.2954954921
+    Evaluation: loss: 126.0318 --- f1_score: 0.1574 --- top_k_recall: 0.2421, 0.3319, 0.3899, 0.4433  --- occurred: 0.1271, 0.1587, 0.1788, 0.1972  --- not occurred: 0.1150, 0.1731, 0.2111, 0.2461
+Epoch 9 / 10:
+    Step 188 / 188, LR: 0.001, time cost: 3m58.4s, loss: 1554.740707421
+    Evaluation: loss: 120.7249 --- f1_score: 0.1598 --- top_k_recall: 0.2412, 0.3333, 0.3981, 0.4449  --- occurred: 0.1269, 0.1601, 0.1832, 0.1981  --- not occurred: 0.1143, 0.1732, 0.2149, 0.2468
+Epoch 10 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 3m57.8s, loss: 1555.775151005
+    Evaluation: loss: 121.7032 --- f1_score: 0.1587 --- top_k_recall: 0.2425, 0.3334, 0.3971, 0.4457  --- occurred: 0.1273, 0.1603, 0.1826, 0.1988  --- not occurred: 0.1151, 0.1731, 0.2145, 0.2470
+training for m task on mimic4 dataset:
+1490841
+Epoch 1 / 10:
+    Step 250 / 250, LR: 0.01, time cost: 14m59.1s, loss: 1965.56222663
+    Evaluation: loss: 155.1343 --- f1_score: 0.1106 --- top_k_recall: 0.1653, 0.2512, 0.3166, 0.3590  --- occurred: 0.1041, 0.1481, 0.1798, 0.1955  --- not occurred: 0.0612, 0.1030, 0.1369, 0.1635
+Epoch 2 / 10:
+    Step 250 / 250, LR: 0.01, time cost: 15m2.8s, loss: 1918.896565857
+    Evaluation: loss: 146.8473 --- f1_score: 0.1323 --- top_k_recall: 0.1989, 0.2846, 0.3446, 0.3845  --- occurred: 0.1218, 0.1627, 0.1929, 0.2073  --- not occurred: 0.0771, 0.1220, 0.1517, 0.1772
+Epoch 3 / 10:
+    Step 250 / 250, LR: 0.01, time cost: 15m9.9s, loss: 1918.741212045
+    Evaluation: loss: 130.5746 --- f1_score: 0.1460 --- top_k_recall: 0.2123, 0.2971, 0.3557, 0.3979  --- occurred: 0.1322, 0.1724, 0.1978, 0.2106  --- not occurred: 0.0801, 0.1248, 0.1579, 0.1873
+Epoch 4 / 10:
+    Step 250 / 250, LR: 0.01, time cost: 15m5.7s, loss: 1917.377373876
+    Evaluation: loss: 124.5563 --- f1_score: 0.1650 --- top_k_recall: 0.2306, 0.3158, 0.3765, 0.4171  --- occurred: 0.1463, 0.1852, 0.2086, 0.2229  --- not occurred: 0.0843, 0.1306, 0.1678, 0.1942
+Epoch 5 / 10:
+    Step 250 / 250, LR: 0.001, time cost: 15m5.3s, loss: 1914.837373711
+    Evaluation: loss: 120.2908 --- f1_score: 0.1754 --- top_k_recall: 0.2496, 0.3427, 0.3984, 0.4391  --- occurred: 0.1566, 0.2001, 0.2208, 0.2352  --- not occurred: 0.0930, 0.1426, 0.1776, 0.2039
+Epoch 6 / 10:
+    Step 250 / 250, LR: 0.001, time cost: 15m5.3s, loss: 1915.319898875
+    Evaluation: loss: 122.0350 --- f1_score: 0.1825 --- top_k_recall: 0.2546, 0.3458, 0.4012, 0.4404  --- occurred: 0.1605, 0.2030, 0.2229, 0.2362  --- not occurred: 0.0941, 0.1428, 0.1783, 0.2042
+Epoch 7 / 10:
+    Step 250 / 250, LR: 0.001, time cost: 15m5.0s, loss: 1914.071515696
+    Evaluation: loss: 121.8832 --- f1_score: 0.1836 --- top_k_recall: 0.2526, 0.3476, 0.4026, 0.4444  --- occurred: 0.1592, 0.2022, 0.2247, 0.2377  --- not occurred: 0.0934, 0.1454, 0.1778, 0.2067
+Epoch 8 / 10:
+    Step 250 / 250, LR: 0.001, time cost: 15m5.2s, loss: 1914.793939624
+    Evaluation: loss: 120.7800 --- f1_score: 0.1875 --- top_k_recall: 0.2576, 0.3502, 0.4068, 0.4449  --- occurred: 0.1616, 0.2052, 0.2258, 0.2386  --- not occurred: 0.0960, 0.1450, 0.1810, 0.2063
+Epoch 9 / 10:
+    Step 250 / 250, LR: 0.001, time cost: 15m8.9s, loss: 1914.102323231
+    Evaluation: loss: 118.4171 --- f1_score: 0.1911 --- top_k_recall: 0.2608, 0.3543, 0.4070, 0.4484  --- occurred: 0.1621, 0.2079, 0.2272, 0.2419  --- not occurred: 0.0986, 0.1464, 0.1798, 0.2065
+Epoch 10 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m10.6s, loss: 1913.45900269
+    Evaluation: loss: 117.2760 --- f1_score: 0.1913 --- top_k_recall: 0.2613, 0.3542, 0.4074, 0.4483  --- occurred: 0.1623, 0.2078, 0.2274, 0.2417  --- not occurred: 0.0990, 0.1465, 0.1800, 0.2067
+training for h task on mimic3 dataset:
+486845
+Epoch 1 / 10:
+    Step 188 / 188, LR: 0.01, time cost: 4m7.9s, loss: 0.5003003487
+    Evaluation: loss: 0.4801 --- auc: 0.8407 --- f1_score: 0.7219
+Epoch 2 / 10:
+    Step 188 / 188, LR: 0.001, time cost: 4m12.5s, loss: 0.419090311
+    Evaluation: loss: 0.4943 --- auc: 0.8394 --- f1_score: 0.6873
+Epoch 3 / 10:
+    Step 188 / 188, LR: 0.0001, time cost: 4m8.3s, loss: 0.4025025301
+    Evaluation: loss: 0.4936 --- auc: 0.8402 --- f1_score: 0.6997
+Epoch 4 / 10:
+    Step 188 / 188, LR: 0.0001, time cost: 4m6.7s, loss: 0.4002002335
+    Evaluation: loss: 0.4943 --- auc: 0.8400 --- f1_score: 0.6997
+Epoch 5 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 4m7.3s, loss: 0.3982982715
+    Evaluation: loss: 0.4944 --- auc: 0.8400 --- f1_score: 0.6997
+Epoch 6 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 4m4.6s, loss: 0.3980980694
+    Evaluation: loss: 0.4946 --- auc: 0.8399 --- f1_score: 0.6997
+Epoch 7 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 4m18.4s, loss: 0.397878451
+    Evaluation: loss: 0.4947 --- auc: 0.8399 --- f1_score: 0.6997
+Epoch 8 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 4m11.2s, loss: 0.397676701
+    Evaluation: loss: 0.4949 --- auc: 0.8400 --- f1_score: 0.6997
+Epoch 9 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 4m11.2s, loss: 0.397474908
+    Evaluation: loss: 0.4949 --- auc: 0.8399 --- f1_score: 0.6997
+Epoch 10 / 10:
+    Step 188 / 188, LR: 1e-05, time cost: 4m9.9s, loss: 0.3972972068
+    Evaluation: loss: 0.4951 --- auc: 0.8399 --- f1_score: 0.6997
+training for h task on mimic4 dataset:
+579405
+Epoch 1 / 10:
+    Step 250 / 250, LR: 0.01, time cost: 15m2.9s, loss: 0.289696433
+    Evaluation: loss: 0.2733 --- auc: 0.9140 --- f1_score: 0.7292
+Epoch 2 / 10:
+    Step 250 / 250, LR: 0.001, time cost: 15m10.0s, loss: 0.21277001
+    Evaluation: loss: 0.2581 --- auc: 0.9237 --- f1_score: 0.7399
+Epoch 3 / 10:
+    Step 250 / 250, LR: 0.0001, time cost: 15m9.8s, loss: 0.201818609
+    Evaluation: loss: 0.2560 --- auc: 0.9242 --- f1_score: 0.7433
+Epoch 4 / 10:
+    Step 250 / 250, LR: 0.0001, time cost: 14m56.8s, loss: 0.20000149
+    Evaluation: loss: 0.2552 --- auc: 0.9247 --- f1_score: 0.7433
+Epoch 5 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m6.7s, loss: 0.198585463
+    Evaluation: loss: 0.2551 --- auc: 0.9248 --- f1_score: 0.7433
+Epoch 6 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m13.9s, loss: 0.19844273
+    Evaluation: loss: 0.2550 --- auc: 0.9249 --- f1_score: 0.7433
+Epoch 7 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m13.8s, loss: 0.19822893
+    Evaluation: loss: 0.2549 --- auc: 0.9249 --- f1_score: 0.7433
+Epoch 8 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m4.6s, loss: 0.198080073
+    Evaluation: loss: 0.2548 --- auc: 0.9249 --- f1_score: 0.7433
+Epoch 9 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m13.5s, loss: 0.19799217
+    Evaluation: loss: 0.2547 --- auc: 0.9249 --- f1_score: 0.7433
+Epoch 10 / 10:
+    Step 250 / 250, LR: 1e-05, time cost: 15m9.6s, loss: 0.197777222
+    Evaluation: loss: 0.2547 --- auc: 0.9249 --- f1_score: 0.7433
