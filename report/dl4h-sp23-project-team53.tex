@@ -15,6 +15,7 @@
 
 \documentclass[11pt,a4paper]{article}
 \usepackage[hyperref]{acl2021}
+\usepackage{hyperref}
 \usepackage{times}
 \usepackage{latexsym}
 \renewcommand{\UrlFont}{\ttfamily\small}
@@ -60,59 +61,143 @@
 % For specific grading rubrics, please see the project instruction.
 
 \section{Introduction}
-\# TODO:
-A  few  sentences  placing  the  work  in  context. Limit it to a few paragraphs at most; your report is on reproducing a piece of work, you don’t have to motivate that work. However, it should be clear enough what the original paper is about and what the contribution of it is.
+In this report, we will focus on our reproduction study for \textit{Context-aware Health Event Prediction via Transition 
+Functions on Dynamic Disease Graphs} \cite{chet}.
+This paper propose a new deep learning model called Chet
+(\textbf{c}ontext-aware \textbf{h}ealth \textbf{e}vent prediction via
+\textbf{t}ransition functions on dynamic disease graphs) that leverages the
+relationship between diseases and how they develop over time to predict future
+outcomes and diagnoses. Existing research on deep learning models for
+classification and prediction of diseases based on longitudinal EHR data have
+modeled disease diagnoses as independent events in their respective visits.
+However, intuition and data indicate that there are in fact hidden patterns
+within the combinations of disease diagnoses that may be useful for predicting
+future outcomes for patients, but yet have not been leveraged in existing
+best-in-class healthcare deep learning models. The Chet model is able to learn
+how diagnosed diseases develop over the course of each patient's doctor visits
+and then utilize this learned disease combination context to predict future
+outcomes and diagnoses. 
+The most innovative part of the approach is the design to include both
+disease combinational information and the dynamic scheme of disease into the model. To include 
+disease combinational information, the paper constructed a weighted disease combination
+based on the entire longitudinal EHR data globally and also a disease subgraph based on the 
+specific visit locally. To include dynamic scheme of diseases, the paper utilized a disease-level
+temporal learning with multiple diagnosis roles and corresponding transition functions to extract
+historical contexts.
 
 \section{Scope of reproducibility}
-\# TODO:
-Explain the claims from the paper you picked for the reproduction study and briefly motivate your choice. We recommend picking the claim that is the central contribution of the paper. To find what this contribution is, try to summarize the most important result of the paper in 1-2 sentences, e.g. ``This paper introduces a new activation function X that outperforms a similar activation function Y on tasks Z,V,W.'' 
-
-Make the scope as specific as possible. It should be something that can be supported or rejected by your data. For example, consider this scope: 
-
-\textit{``Contextual embedding models have shown strong performance on a number of tasks across NLP. We will run experiments evaluating two types of contextual embedding models on datasets X, Y, and Z.''}
-
-
-That scope is too broad and lacks precise outcome (what is ``strong performance?''). Now consider this scope:
-
-\textit{``Finetuning pretrained BERT on SST-2 will have higher accuracy than an LSTM trained with GloVe embeddings.''}
-
-This scope is better because it's more specific and has an outcome that can be either supported or rejected based on your work.
-
+In our reproduction study, we will use the same methodology as proposed by the
+authors for data selection, cleaning, and preprocessing. Specifically, we will join the MIMIC-III \cite{mimic3} and MIMIC-IV
+\cite{mimic4} datasets along the same overlapping time ranges that the authors
+describe and split training/validation/test sets randomly using the same ratios
+they used. We will build the diagnosis graphs and calculate the adjacency
+matrices for their corresponding subgraphs using the same methodology described
+by the authors. We will train the model and at least one listed baseline model for diagnosis prediction and hearth failure prediction respectively and compare the performance.
 \subsection{Addressed claims from the original paper}
-\# TODO:
-Clearly itemize the claims you are testing:
+% \# TODO:
+% Clearly itemize the claims you are testing:
 \begin{itemize}
-    \item Claim 1
-    \item Claim 2
-    \item Claim 3
+    \item By utilizing disease combinational information and the dynamic scheme of diseases, the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than RETAIN model(one of the baseline models). 
+    \item The designed global disease graph and visit subgraphs can integrate global and local context from disease combinations to inform the deep learning model, so the Chet model has higher accuracy for diagnosis prediction and hearth failure prediction than $Chet_d-$ model where dynamic part of GNN is removed in Chet.
+    \item The proposed three diagnosis roles and corresponding transition functions can extract historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and heart failure prediction than $Chet_t-$ model where transaction functions are removed in Chet.
+    \item  The proposed three diagnosis roles and corresponding transition functions can extract historical context and learn the disease development schemes, so the Chet model has higher accuracy for diagnosis prediction and heart failure prediction than $Chet_{att}-$ model where attention from the final patient embedding layer is removed in Chet. This is an additional ablation study we proposed.
 \end{itemize}
 
-
 \section{Methodology}
-\# TODO:
-In this section you explain your approach -- did you use the author's code, did you aim to re-implement the approach from the paper description? Summarize the resources (code, documentation, GPUs) that you used. 
-
+In this section , we demonstrate the details of the model used in the original paper, our implementation approach as well as necessary computational resource.
 \subsection{Model descriptions}
-\# TODO:
-Describe the models used in the original paper, including the architecture, learning objective and the number of parameters.
+The Chet model can be decomposed into three layers: graph layer, transition layer and embedding layer.
+
+\subsubsection{Graph Layer}
+The first layer is a dynamic graph learning layer to extract both local and global contexts for diagnosis and neighbors in visit t using a memory-efficient calculation:
+\begin{equation}
+  Z_D^t =m^t \odot (M + A(m^t\odot M) + A(n^t\odot N))
+\end{equation}
+\begin{equation}
+  Z_N^t =n^t \odot (N + A(n^t\odot N) + A(m^t\odot M))
+\end{equation}
+Where M,N represent embedding matrices for diagnoses and neighbors, A is the static adjacency matrix, 
+$m^t$ and $n^t$ represent diagnoses code and neighbors code in t visit, $Z_D^t$ is aggregated diagnosis local context and diagnosis global context and $Z_N^t$ is aggregated neighbor global context. Finally, the GNN outputs are calculated with a fully connected layer with LeakyReLU as the activation function from $Z_D^t$ and $Z_N^t$.
+\begin{equation}
+  H^t_{D,N}=\textrm{LeakyReLU}(Z^t_{D,N}W)\in\mathcal{R}^{d\times s'}
+\end{equation}
+
+\subsubsection{Transition Layer}
+The Transition(second) Layer is to learn the disease development schemes, it takes the vector of diagnosis codes $m^t$ per visit as
+input and partitions it into three disjoint vectors: (1) persistent diseases 
+$m_p^t$ representing diagnoses in visit $t$ that are also present in visit $t-1$, 
+(2) emerging neighbors $m_{en}^t$ representing diagnoses in visit $t$
+that are neighbors in visit $t-1$, (3) emerging unrelated diseases 
+$m_{eu}^t$ representing diagnoses in visit $t$ that are unrelated diseases in
+visit $t-1$. The layer is composed of three transition functions
+corresponding to each partition of $m^t$ and are designed to extract
+historical context from previous visits to compute the hidden values. 
+​
+The transition function for calculating the hidden values for both $m_{en}^t$
+and $m_{eu}^t$ is a scaled dot-product attention \cite{dp_attention}: 
+
+\begin{equation}
+\begin{tabular}{l}
+Attn \\ (Q, K, V) 
+\end{tabular}
+=
+\begin{tabular}{l}
+  soft \\
+  max
+\end{tabular}\left(\frac{QW_q(KW_k)^T}{\sqrt{a}}\right)VW_v 
+\end{equation}
+\normalsize
+Where $a$ is the attention size, $W_q$, $W_k$, $W_v$ are the weight matrices.
+For $h_{en}^t$, $Q$ and $K$ are the hidden neighbor embeddings $H_N^{t-1}$.
+For $h_{eu}^t$, $Q$ and $K$ are the universal embeddings of unrelated diseases $R$.
+For both $h_{en}^t$ and $h_{eu}^t$, $V$ is the diagnosis embeddings $H^{t}_D$.
+​
+The transition function for calculating the hidden values for $m_p^t$ is a modified 
+gated recurrent unit (M-GRU) \cite{gru}:
+
+\begin{equation}
+  h_p^t = {M\verb|-|GRU}(m_p^t \odot H_D^t , h_{en}^t, h_{eu}^t, h_p^{t-1})
+\end{equation}
+
+Finally, to calculate the visit embedding $v^t$, we apply max pooling to the 
+transition output of the three partitions, which are all contained in $h_p^t$:
+\begin{equation}
+  v^t = \verb|max_pooling|(h_p^t).
+\end{equation}
+
+\subsubsection{Embedding Layer}
+The third layer is an embedding layer with a location-based attention to calculate the final hidden representation of all visits embeddings.
+\begin{equation}
+  \alpha=\textrm{softmax}([v^1,v^2,\dots, v^T]W_\alpha)\in \mathcal{R}^T
+\end{equation}
+\begin{equation}
+  o=\alpha[v^1,v^2,\dots, v^T]^T\in\mathcal{R}^p
+\end{equation}
+Where $W_\alpha$ is a context vector for attention, $\alpha$ is the attention score for visits and o represents the final patient embedding.
 
 \subsection{Data descriptions}
-\# TODO:
-Describe the datasets you used (with some statistics) and how you obtained them. 
+For their reproduction study, we will use the MIMIC-III \cite{mimic3} and MIMIC-IV
+\cite{mimic4} datasets downloaded from PhysioNet\cite{physionet}. for training/validation/testing, same as the original paper. In MIMIC-III data, there are 7493 patients in total from 2001 to 2012 with an average of 2.6 visits per patient and an average of 13.06 diagnose codes per visit. We randomly split the data into training set, validation set and test set with a size of 6000, 493 and 1000 respectively. In MIMIC-IV data, there are 10000 patients in total from 2013 to 2019 with an average of 3.79 visits per patient and an average of 13.51 diagnose codes per visit. We split the data into training set, validation set and test set with a size of 8000, 1000 and 1000 respectively. 
 
 \subsection{Hyperparameters}
 \# TODO:
 Describe how you set the hyperparameters and what the source was for their value (e.g. paper, code or your guess). 
 
 \subsection{Implementation}
-\# TODO:
-Describe whether you use the existing code or write your own code, with the link to the code. Note that the github repo you link to should be public and have a clear documentation.
+In our preliminary reproduction implementation, we built a \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/notebook.ipynb}{python notebook} to build a complete flow including hyperparameters setting, 
+data preprocessing, data loading, model building, model training and evaluation. For now, we kept the same hyperparameters as the original paper and reused the \href{https://github.com/LuChang-CS/Chet}{author's code} in data preprocessing.
+Our major code efforts went into model rebuilding and the training/validation flow. In training/validation part, we built our own training and validation method to streamline the training, validation and test process while reusing the existing 
+schedulers and metrics. In model rebuilding part, we tried to follow closely with the model structure and all the equations in the paper step by step.
 
 \subsection{Computational requirements}
-\# TODO:
-Provide information on computational requirements for each of your experiments. For example, the number of CPU/GPU hours and memory requirements.
-Mention both your estimation made before running the experiments (i.e. in the proposal) and the actual resources you used to reproducing the experiments. 
-\textbf{\textit{You'll need to think about this ahead of time, and write your code in a way that captures this information so you can later add it to this section.} }
+All code are implemented with Python and PyTorch. For additional package and version details, please refer to \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/requirements.txt}{requirements.txt}. In our initial investigation, it took around 10 minutes for data preprocessing and approximately 96 hours to complete 
+total 200 epoches of training for a combined MIMIC-III/MIMIC-IV training set on our local machine with 16GB memory and Apple M1 PRO chip. In our reproduction implementation, it took 10 hours to actual finish 10 epoches of training for a combined MIMIC-III/MIMIC-IV training set on the same machine to get an initial result. 
+In order to unblock the computational constraints we have with the CPUs on our local machine, we would like to further explore the following computational resources:
+\begin{itemize}
+  \item We will try to use the available GPUs(16 cores) on one of our local machines for the model training.
+  \item We will explore with Google Colab to utilize their free standard GPUs(NVIDIA T4 Tensor Core GPUs) for the model training.
+  \item We will explore with Microsoft Azure for available Virtual Machines with GPU using the available credit we have.
+\end{itemize}
 
 \section{Results}
 \# TODO:
