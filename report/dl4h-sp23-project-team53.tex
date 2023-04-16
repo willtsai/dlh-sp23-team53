@@ -134,32 +134,40 @@ Mention both your estimation made before running the experiments (i.e. in the pr
 % The number of subsections for results should be the same as the number of hypotheses you are trying to verify.
 
 We evaluated prediction performance for our models against the test datasets.
-Our preliminary results are from running each Chet model one time with 10 training
-epochs instead of the 200 epochs originally used in the paper. From our more
-limited runs, we have found that our results for Chet model performance align
-more closely with results from the original paper for the heart failure
+Our preliminary results are from training each of our reproduced Chet models one
+time with 10 epochs instead of the 200 epochs originally used in the paper. From
+our more limited runs, we have found that our Chet model performance results
+align more closely with results from the original paper for the heart failure
 prediction task than for the diagnosis prediction task. Additionally, we also
 make the same observation as the original paper that MIMIC-IV trained models
-outperform MIMIC-III trained models in terms of AUC and F1 score.
+outperform MIMIC-III trained models in terms of AUC and F1 score. Since we have not yet reproduced results from any of the baseline models, we are not
+in a position to determine whether our work supports the claims from the original
+paper that Chet outperforms all the baseline models.
 
-Since we have not reproduced results from any of the baseline models, we are not
-yet able to determine whether our work supports the claims from the original
-paper that Chet outperforms all the baseline models. We plan to reproduce at
-lease one of the baseline models (likely RETAIN) so that we may compare our
+Our plan for finalizing experiement results is as follows:
+- We plan to reproduce at
+least one of the baseline models (likely RETAIN) so that we may compare our
 reproduced Chet results against those from a reproduced baseline model.
 
 \subsection{Diagnosis Prediction Results}
-
+Model performance results for the diagnosis prediction task from our preliminary experiments are summarized in Table~\ref{tab:diag}. 
+Compared to the 200-epoch Chet model performance results from the original paper, our reproduced 10-epoch Chet 
+model performed only approximately half as well in terms of F1 score and approximately 73\% as well in terms of R@10 and R@20, 
+across both MIMIC-III and MIMIC-IV datasets. We suspect that this large discrepancy in performance is due to 
+having trained our reproduced Chet models for only 10 epochs instead of the 200 epochs used in the original paper.
+Interestingly, for the Chet model, the number of parameters in our experiments were approximately 58\% of the number of parameters in the 
+original experiment despite using the same hyperparameters and datasets. We would have expected the space complexity of our Chet models to be 
+the same of the original Chet models. We think that this difference might be due to how we are computing data embeddings in the model layers 
+and plan to investigate this further to hopefully resolve this discrepancy.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-\hline
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
 {Model} & \multicolumn{4}{c|}{MIMIC-III} & \multicolumn{4}{c|}{MIMIC-IV} \\ \cline{2-9} 
- & w-F1 mean (st dev) & R@10 mean (st dev) & R@20 mean (st dev) & \# Params & w-F1 mean (st dev) & R@10 mean (st dev) & R@20 mean (st dev) & \# Params \\ \hline
+ & w-F1 & R@10 & R@20 & \# Params & w-F1 & R@10 & R@20 & \# Params \\ \hline
 {Repro Baseline} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\ \cline{1-9}
-{Repro Chet} & 12.89 (TODO) & 20.19 (TODO) & 28.96 (TODO) & 1.22M & 14.21 (TODO) & 21.64 (TODO) & 30.32 (TODO) & 1.49MM \\ \cline{1-9}
-{Original Chet} & 22.63 (0.08) & 28.64 (0.13) & 37.87 (0.09) & 2.12M & 26.35 (0.13) & 30.28 (0.09) & 38.69 (0.15) & 2.59M \\ \cline{1-9}
+{Repro Chet} & 12.89 & 20.19 & 28.96 & 1.22M & 14.21 & 21.64 & 30.32 & 1.49MM \\ \cline{1-9}
+{Original Chet} & 22.63 & 28.64 & 37.87 & 2.12M & 26.35 & 30.28 & 38.69 & 2.59M \\ \cline{1-9}
 \end{tabular}
 \caption{Diagnosis prediction results on MIMIC-III and MIMIC-IV using $\verb|w-F1|$ (\%) and $\verb|R@k|$ (\%).}
 \label{tab:diag}
@@ -171,10 +179,10 @@ reproduced Chet results against those from a reproduced baseline model.
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
 {Model} & \multicolumn{3}{c|}{MIMIC-III} & \multicolumn{3}{c|}{MIMIC-IV} \\ \cline{2-7} 
- & AUC mean (st dev) & F1 mean (st dev) & \# Params & AUC mean (st dev) & F1 mean (st dev) & \# Params \\ \hline
+ & AUC & F1 & \# Params & AUC & F1 & \# Params \\ \hline
 {Repro Baseline Models} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\ \cline{1-7}
-{Repro Chet} & 84.16 (TODO) & 69.32 (TODO) & 0.47M & TODO & TODO & 0.58M \\ \cline{1-7}
-{Original Chet} & 86.14 (0.14) & 73.08 (0.09) & 0.68M & 90.83 (0.09) & 71.14 (0.15) & 0.88M \\ \cline{1-7}
+{Repro Chet} & 84.16 & 69.32 & 0.47M & 94.00 & 75.14 & 0.58M \\ \cline{1-7}
+{Original Chet} & 86.14 & 73.08 & 0.68M & 90.83 & 71.14 & 0.88M \\ \cline{1-7}
 \end{tabular}
 \caption{Heart failure prediction results on MIMIC-III and MIMIC-IV using $\verb|AUC|$ (\%) and $\verb|F1|$ (\%).}
 \label{tab:hf}
