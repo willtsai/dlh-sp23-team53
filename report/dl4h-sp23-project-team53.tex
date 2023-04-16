@@ -13,11 +13,13 @@
 %%e.agirre@ehu.es or Sergi.Balari@uab.es
 %% and that of ACL 08 by Joakim Nivre and Noah Smith
 
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper,fleqn]{article}
 \usepackage[hyperref]{acl2021}
 \usepackage{hyperref}
 \usepackage{times}
 \usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{float}
 \renewcommand{\UrlFont}{\ttfamily\small}
 
 % This is not strictly necessary, and may be commented out,
@@ -200,52 +202,162 @@ In order to unblock the computational constraints we have with the CPUs on our l
 \end{itemize}
 
 \section{Results}
-\# TODO:
-Start with a high-level overview of your results. Does your work support the claims you listed in section 2.1? Keep this section as factual and precise as possible, reserve your judgement and discussion points for the next ``Discussion'' section. 
-
-Go into each individual result you have, say how it relates to one of the claims, and explain what your result is. Logically group related results into sections. Clearly state if you have gone beyond the original paper to run additional experiments and how they relate to the original claims. 
-
-Tips 1: Be specific and use precise language, e.g. ``we reproduced the accuracy to within 1\% of reported value, that upholds the paper's conclusion that it performs much better than baselines.'' Getting exactly the same number is in most cases infeasible, so you'll need to use your judgement call to decide if your results support the original claim of the paper. 
-
-Tips 2: You may want to use tables and figures to demonstrate your results.
-
+% Start with a high-level overview of your results. Does your work support the
+% claims you listed in section 2.1? Keep this section as factual and precise as
+% possible, reserve your judgement and discussion points for the next
+% ``Discussion'' section. 
+% Go into each individual result you have, say how it relates to one of the
+% claims, and explain what your result is. Logically group related results into
+% sections. Clearly state if you have gone beyond the original paper to run
+% additional experiments and how they relate to the original claims. 
+% Tips 1: Be specific and use precise language, e.g. ``we reproduced the accuracy
+% to within 1\% of reported value, that upholds the paper's conclusion that it
+% performs much better than baselines.'' Getting exactly the same number is in
+% most cases infeasible, so you'll need to use your judgement call to decide if
+% your results support the original claim of the paper. 
+% Tips 2: You may want to use tables and figures to demonstrate your results.
 % The number of subsections for results should be the same as the number of hypotheses you are trying to verify.
 
-\subsection{Result 1}
-\# TODO:
+We evaluated prediction performance for our models against the test datasets.
+Our preliminary results are from training each of our reproduced Chet models one
+time with 10 epochs instead of the 200 epochs originally used in the paper. From
+our more limited runs, we have found that our Chet model performance results
+align more closely with results from the original paper for the heart failure
+prediction task than for the diagnosis prediction task. Additionally, we also
+make the same observation as the original paper that MIMIC-IV trained models
+outperform MIMIC-III trained models in terms of AUC and F1 score. Since we have not yet reproduced results from any of the baseline models, we are not
+in a position to determine whether our work supports the claims from the original
+paper that Chet outperforms all the baseline models.
+The plan for finalizing our experiment results is as follows: 
+\begin{itemize}
+    \item Retrain the reproduced Chet model for \emph{diagnosis} prediction using as
+    close to the original 200 epochs as we are computationally able to, then
+    collect, analyze, and compare the results.
+    \item Retrain the reproduced Chet model for \emph{heart failure} prediction using
+    as close to the original 200 epochs as we are computationally able to, then
+    collect, analyze, and compare the results.
+    \item Reproduce at least one of the baseline models (likely RETAIN) to
+    compare reproduced Chet prediction results against those from a reproduced
+    baseline model.
+    \item Investigate the discrepancy in the number of parameters between our
+    reproduced Chet models and the original Chet models, making any necessary 
+    changes to our code as needed.
+    \item Implement at least one of the ablation studies from the original
+    paper - collect, analyze, and compare the results.
+    \item Implement an additional ablation study of our own - collect, analyze,
+    and compare the results.
+\end{itemize}
 
-\subsection{Result 2}
-\# TODO:
+\subsection{Diagnosis Prediction Results}
+Model performance results for the diagnosis prediction task from our preliminary experiments are summarized in Table~\ref{tab:diag}. 
+Compared to the 200-epoch Chet model performance results from the original paper, our reproduced 10-epoch Chet 
+model performed only approximately half as well in terms of F1 score and approximately 73\% as well in terms of R@10 and R@20, 
+across both MIMIC-III and MIMIC-IV datasets. We suspect that this large discrepancy in performance is due to 
+having trained our reproduced Chet models for only 10 epochs instead of the 200 epochs used in the original paper.
+Interestingly, for the Chet model, the number of parameters in our experiments were approximately 58\% of the number of parameters in the 
+original experiment despite using the same hyperparameters and datasets.
+\begin{table*}[ht]
+  \centering
+  \begin{tabular}{|ccccc|cccc|} \hline
+    {Model} & \multicolumn{4}{c|}{MIMIC-III} & \multicolumn{4}{c|}{MIMIC-IV} \\ \cline{2-9} 
+    & w-F1 & R@10 & R@20 & \# Params & w-F1 & R@10 & R@20 & \# Params \\ \hline
+    {Repro Baseline} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\ \cline{1-9}
+    {Repro Chet} & 12.89 & 20.19 & 28.96 & 1.22M & 14.21 & 21.64 & 30.32 & 1.49MM \\ \cline{1-9}
+    {Original Chet} & 22.63 & 28.64 & 37.87 & 2.12M & 26.35 & 30.28 & 38.69 & 2.59M \\ \cline{1-9}
+  \end{tabular}
+  \caption{Diagnosis prediction results on MIMIC-III and MIMIC-IV using w-F1 (\%) and R@k (\%).}
+  \label{tab:diag}
+  \end{table*}
+
+\subsection{Heart Failure Prediction Results}
+Model performance results for the heart failure prediction task from our preliminary experiments are summarized in Table~\ref{tab:hf}. 
+Compared to the 200-epoch Chet model performance results from the original paper, our reproduced 10-epoch Chet 
+model achieved similar levels of performance in terms of AUC and F1 score, across both MIMIC-III and MIMIC-IV datasets.
+This is suprising given that we trained on 95\% less epochs than the original paper, but we suspect that the decent prediction performance 
+can be attributed to the fact that the heart failure prediction task is a much easier task than the diagnosis prediction task. Intuitively, 
+predicting a general diagnosis is much more ambiguous and involves more complexity than predicting a single specific condition such as heart failure. 
+Indeed, we observe in the original paper that the prediction performance for heart failure is much better than that of diagnosis prediction, across all 
+baseline models and Chet, for both MIMIC-III and MIMIC-IV datasets.
+Similar to our diagnosis prediction Chet models, we observe that the number of parameters in our experiments were approximately 68\% of the number of parameters in the 
+original experiment despite using the same hyperparameters and datasets. We would have expected the space complexity of our Chet models to be 
+the same of the original Chet models. We think that this difference might be due to how we are computing data embeddings in the model layers 
+and plan to investigate this further to hopefully resolve this discrepancy.
+\begin{table*}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+{Model} & \multicolumn{3}{c|}{MIMIC-III} & \multicolumn{3}{c|}{MIMIC-IV} \\ \cline{2-7} 
+ & AUC & F1 & \# Params & AUC & F1 & \# Params \\ \hline
+{Repro Baseline Models} & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO & \#TODO \\ \cline{1-7}
+{Repro Chet} & 84.16 & 69.32 & 0.47M & 94.00 & 75.14 & 0.58M \\ \cline{1-7}
+{Original Chet} & 86.14 & 73.08 & 0.68M & 90.83 & 71.14 & 0.88M \\ \cline{1-7}
+\end{tabular}
+\caption{Heart failure prediction results on MIMIC-III and MIMIC-IV using AUC (\%) and F1 (\%).}
+\label{tab:hf}
+\end{table*}
 
 \subsection{Additional results not present in the original paper}
-\# TODO:
-Describe any additional experiments beyond the original paper. This could include experimenting with additional datasets, exploring different methods, running more ablations, or tuning the hyperparameters. For each additional experiment, clearly describe which experiment you conducted, its result, and discussions (e.g. what is the indication of the result).
+We plan to complete at least one ablation study from the original paper as well
+as an additional ablation experiment of removing the attention from the final patient
+embedding layer (not part of the original paper). We will include our results
+for these additional experiments in the final report.
+% Describe any additional experiments beyond the original paper. This
+% could include experimenting with additional datasets, exploring different
+% methods, running more ablations, or tuning the hyperparameters. For each
+% additional experiment, clearly describe which experiment you conducted, its
+% result, and discussions (e.g. what is the indication of the result).
 
 \section{Discussion}
 \# TODO:
-Describe larger implications of the experimental results, whether the original paper was reproducible, and if it wasn’t, what factors made it irreproducible. 
+% Describe larger implications of the experimental results, whether the original
+% paper was reproducible, and if it wasn’t, what factors made it irreproducible. 
 
-Give your judgement on if you feel the evidence you got from running the code supports the claims of the paper. Discuss the strengths and weaknesses of your approach -- perhaps you didn't have time to run all the experiments, or perhaps you did additional experiments that further strengthened the claims in the paper.
+% Give your judgement on if you feel the evidence you got from running the code
+% supports the claims of the paper. Discuss the strengths and weaknesses of your
+% approach -- perhaps you didn't have time to run all the experiments, or
+% perhaps you did additional experiments that further strengthened the claims in
+% the paper.
 
 \subsection{What was easy}
 \# TODO:
-Describe which parts of your reproduction study were easy. E.g. was it easy to run the author's code, or easy to re-implement their method based on the description in the paper. The goal of this section is to summarize to the reader which parts of the original paper they could easily apply to their problem. 
+% Describe which parts of your reproduction study were easy. E.g. was it easy to
+% run the author's code, or easy to re-implement their method based on the
+% description in the paper. The goal of this section is to summarize to the
+% reader which parts of the original paper they could easily apply to their
+% problem. 
 
-Tips: Be careful not to give sweeping generalizations. Something that is easy for you might be difficult to others. Put what was easy in context and explain why it was easy (e.g. code had extensive API documentation and a lot of examples that matched experiments in papers). 
+% Tips: Be careful not to give sweeping generalizations. Something that is easy
+% for you might be difficult to others. Put what was easy in context and explain
+% why it was easy (e.g. code had extensive API documentation and a lot of
+% examples that matched experiments in papers). 
 
 \subsection{What was difficult}
 \# TODO:
-Describe which parts of your reproduction study were difficult or took much more time than you expected. Perhaps the data was not available and you couldn't verify some experiments, or the author's code was broken and had to be debugged first. Or, perhaps some experiments just take too much time/resources to run and you couldn't verify them. The purpose of this section is to indicate to the reader which parts of the original paper are either difficult to re-use, or require a significant amount of work and resources to verify. 
+% Describe which parts of your reproduction study were difficult or took much
+% more time than you expected. Perhaps the data was not available and you
+% couldn't verify some experiments, or the author's code was broken and had to
+% be debugged first. Or, perhaps some experiments just take too much
+% time/resources to run and you couldn't verify them. The purpose of this
+% section is to indicate to the reader which parts of the original paper are
+% either difficult to re-use, or require a significant amount of work and
+% resources to verify. 
 
-Tips: Be careful to put your discussion in context. For example, don't say ``the math was difficult to follow,'' say ``the math requires advanced knowledge of calculus to follow.'' 
+% Tips: Be careful to put your discussion in context. For example, don't say
+% ``the math was difficult to follow,'' say ``the math requires advanced
+% knowledge of calculus to follow.'' 
 
 \subsection{Recommendations for reproducibility}
 \# TODO:
-Describe a set of recommendations to the original authors or others who work in this area for improving reproducibility.
+% Describe a set of recommendations to the original authors or others who work
+% in this area for improving reproducibility.
 
 \section{Communication with original authors}
 \# TODO:
-Document the extent of (or lack of) communication with the original authors. To make sure the reproducibility report is a fair assessment of the original research we recommend getting in touch with the original authors. You can ask authors specific questions, or if you don't have any questions you can send them the full report to get their feedback.
+% Document the extent of (or lack of) communication with the original authors.
+% To make sure the reproducibility report is a fair assessment of the original
+% research we recommend getting in touch with the original authors. You can ask
+% authors specific questions, or if you don't have any questions you can send
+% them the full report to get their feedback.
 
 
 \bibliographystyle{acl_natbib}
