@@ -187,7 +187,7 @@ Describe how you set the hyperparameters and what the source was for their value
 In our preliminary reproduction implementation, we built a \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/notebook.ipynb}{python notebook} to build a complete flow including hyperparameters setting, 
 data preprocessing, data loading, model building, model training and evaluation. For now, we kept the same hyperparameters as the original paper and reused the \href{https://github.com/LuChang-CS/Chet}{author's code} in data preprocessing.
 Our major code efforts went into model rebuilding and the training/validation flow. In training/validation part, we built our own training and validation method to streamline the training, validation and test process while reusing the existing 
-schedulars and metrics. In model rebuilding part, we tried to follow closely with the model structure and all the equations in the paper step by step.
+schedulers and metrics. In model rebuilding part, we tried to follow closely with the model structure and all the equations in the paper step by step.
 
 \subsection{Computational requirements}
 All code are implemented with Python and PyTorch. For additional package and version details, please refer to \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/requirements.txt}{requirements.txt}. In our initial investigation, it took around 10 minutes for data preprocessing and approximately 96 hours to complete 
