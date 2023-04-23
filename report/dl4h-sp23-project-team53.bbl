@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Cho et~al.(2014)Cho, van Merrienboer, Gulcehre, Bahdanau, Bougares,
@@ -38,7 +38,17 @@ Chang Lu, Tian Han, and Yue Ning. 2022.
 \newblock \href {https://doi.org/10.1609/aaai.v36i4.20380} {Context-aware
   health event prediction via transition functions on dynamic disease graphs}.
 \newblock \emph{Proceedings of the AAAI Conference on Artificial Intelligence},
-  36(4):4567–4574.
+  36(4):4567--4574.
+
+\bibitem[{Lu et~al.(2021)Lu, Reddy, Chakraborty, Kleinberg, and Ning}]{cgl}
+Chang Lu, Chandan~K Reddy, Prithwish Chakraborty, Samantha Kleinberg, and Yue
+  Ning. 2021.
+\newblock \href {https://doi.org/10.24963/ijcai.2021/486} {Collaborative graph
+  learning with auxiliary text for temporal event prediction in healthcare}.
+\newblock In \emph{Proceedings of the Thirtieth International Joint Conference
+  on Artificial Intelligence, {IJCAI-21}}, pages 3529--3535. International
+  Joint Conferences on Artificial Intelligence Organization.
+\newblock Main Track.
 
 \bibitem[{Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones,
   Gomez, Kaiser, and Polosukhin}]{dp_attention}
