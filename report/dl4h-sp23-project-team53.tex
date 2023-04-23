@@ -106,7 +106,7 @@ performance.
     heart failure prediction than $Chet_{t-}$ model where transaction functions
     are removed in Chet.
     \item The Chet model has higher accuracy for diagnosis prediction and
-    heart failure prediction than $Chet_{att}-$ model where attention from the
+    heart failure prediction than $Chet_{att-}$ model where attention from the
     final patient embedding layer is removed in Chet. This is an additional
     ablation study we proposed.
 \end{itemize}
@@ -139,7 +139,7 @@ activation function from $Z_D^t$ and $Z_N^t$.
 \end{equation}
 
 \subsubsection{Transition Layer}
-The Transition(second) Layer is to learn the disease development schemes, it
+The Transition (second) Layer is to learn the disease development schemes, it
 takes the vector of diagnosis codes $m^t$ per visit as input and partitions it
 into three disjoint vectors: (1) persistent diseases $m_p^t$ representing
 diagnoses in visit $t$ that are also present in visit $t-1$, (2) emerging
@@ -193,8 +193,8 @@ Where $W_\alpha$ is a context vector for attention, $\alpha$ is the attention
 score for visits and o represents the final patient embedding.
 
 \subsection{Data descriptions}
-For their reproduction study, we will use the MIMIC-III \cite{mimic3} and
-MIMIC-IV \cite{mimic4} datasets downloaded from PhysioNet\cite{physionet}. for
+For our reproduction study, we will use the MIMIC-III \cite{mimic3} and
+MIMIC-IV \cite{mimic4} datasets downloaded from PhysioNet \cite{physionet} for
 training/validation/testing, same as the original paper. In MIMIC-III data,
 there are 7493 patients in total from 2001 to 2012 with an average of 2.6 visits
 per patient and an average of 13.06 diagnose codes per visit. We randomly split
@@ -210,7 +210,7 @@ and test set with a size of 8000, 1000 and 1000 respectively.
 % their value (e.g. paper, code or your guess). 
 
 \subsection{Implementation}
-In our preliminary reproduction implementation, we built a
+In our preliminary reproduction implementation, we built a 
 \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/notebook.ipynb}{python
 notebook} to build a complete flow including hyperparameters setting, data
 preprocessing, data loading, model building, model training and evaluation. For
