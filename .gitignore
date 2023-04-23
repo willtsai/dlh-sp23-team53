@@ -140,9 +140,10 @@ dmypy.json
 *.DS_Store
 
 # local data directory
-data/
+data/downloaded
+data/mimic3/raw
+data/mimic4/raw
+data/params
 
 # PDF output files
-proposal/*.pdf
-report/*.pdf
 *.pdf
