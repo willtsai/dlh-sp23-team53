@@ -3,6 +3,14 @@ import numpy as np
 from preprocess.parse_csv import EHRParser
 
 
+def generate_patient_code_adjacent(code_x: np.ndarray, code_num: int) -> np.ndarray:
+    print('generating patient code adjacent matrix ...')
+    result = np.zeros((len(code_x), code_num + 1), dtype=int)
+    for i, codes in enumerate(code_x):
+        adj_codes = codes[codes > 0]
+        result[i][adj_codes] = 1
+    return result
+
 def generate_code_code_adjacent(pids, patient_admission, admission_codes_encoded, code_num, threshold=0.01):
     print('generating code code adjacent matrix ...')
     n = code_num

@@ -1,3 +1,6 @@
+# VSCode IDE
+.vscode
+
 # LaTeX files
 *.aux
 *.fdb_latexmk
@@ -147,3 +150,6 @@ data/params
 
 # PDF output files
 *.pdf
+
+# local CGL code
+/CGL

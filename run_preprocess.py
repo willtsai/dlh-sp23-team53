@@ -4,7 +4,7 @@ import _pickle as pickle
 from preprocess import save_sparse, save_data
 from preprocess.parse_csv import Mimic3Parser, Mimic4Parser, EICUParser
 from preprocess.encode import encode_code
-from preprocess.build_dataset import split_patients, build_code_xy, build_heart_failure_y
+from preprocess.build_dataset import split_patients, build_code_xy, build_cgl_code_xy, build_heart_failure_y
 from preprocess.auxiliary import generate_code_code_adjacent, generate_neighbors, normalize_adj, divide_middle, generate_code_levels
 
 # This run_preprocess class is re-used from the codebase of the original paper
@@ -66,11 +66,16 @@ def pre_process(dataset_names, data_saved=False):
         avg_admission_num = sum([len(admissions) for admissions in patient_admission.values()]) / patient_num
         max_visit_code_num = max([len(codes) for codes in admission_codes.values()])
         avg_visit_code_num = sum([len(codes) for codes in admission_codes.values()]) / len(admission_codes)
+        max_code_num_in_a_visit = 0
+        for admission_id, codes in admission_codes.items():
+            if len(codes) > max_code_num_in_a_visit:
+                max_code_num_in_a_visit = len(codes)
         print('patient num: %d' % patient_num)
         print('max admission num: %d' % max_admission_num)
         print('mean admission num: %.2f' % avg_admission_num)
         print('max code num in an admission: %d' % max_visit_code_num)
         print('mean code num in an admission: %.2f' % avg_visit_code_num)
+        print('max code num in a visit: %d' % max_code_num_in_a_visit)
 
         print('encoding code ...')
         admission_codes_encoded, code_map = encode_code(patient_admission, admission_codes)
@@ -102,6 +107,13 @@ def pre_process(dataset_names, data_saved=False):
         print('building test codes features and labels ...')
         (test_code_x, test_codes_y, test_visit_lens) = build_code_xy(test_pids, *common_args)
 
+        print('building train codes features and labels for CGL...')
+        (train_code_x_cgl, train_codes_y_cgl, train_visit_lens_cgl) = build_cgl_code_xy(train_pids, *common_args, max_code_num_in_a_visit)
+        print('building valid codes features and labels for CGL...')
+        (valid_code_x_cgl, valid_codes_y_cgl, valid_visit_lens_cgl) = build_cgl_code_xy(valid_pids, *common_args, max_code_num_in_a_visit)
+        print('building test codes features and labels for CGL...')
+        (test_code_x_cgl, test_codes_y_cgl, test_visit_lens_cgl) = build_cgl_code_xy(test_pids, *common_args, max_code_num_in_a_visit)
+        
         print('generating train neighbors ...')
         train_neighbors = generate_neighbors(train_code_x, train_visit_lens, code_adj)
         print('generating valid neighbors ...')
@@ -149,11 +161,11 @@ def pre_process(dataset_names, data_saved=False):
             os.makedirs(test_path)
 
         print('\tsaving training data')
-        save_data(train_path, train_code_x, train_visit_lens, train_codes_y, train_hf_y, train_divided, train_neighbors)
+        save_data(train_path, train_code_x, train_code_x_cgl, train_visit_lens, train_codes_y, train_hf_y, train_divided, train_neighbors)
         print('\tsaving valid data')
-        save_data(valid_path, valid_code_x, valid_visit_lens, valid_codes_y, valid_hf_y, valid_divided, valid_neighbors)
+        save_data(valid_path, valid_code_x, valid_code_x_cgl, valid_visit_lens, valid_codes_y, valid_hf_y, valid_divided, valid_neighbors)
         print('\tsaving test data')
-        save_data(test_path, test_code_x, test_visit_lens, test_codes_y, test_hf_y, test_divided, test_neighbors)
+        save_data(test_path, test_code_x, test_code_x_cgl, test_visit_lens, test_codes_y, test_hf_y, test_divided, test_neighbors)
 
         code_adj = normalize_adj(code_adj)
         save_sparse(os.path.join(standard_path, 'code_adj'), code_adj)

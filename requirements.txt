@@ -12,6 +12,9 @@ torch
 torchaudio
 torchvision
 typing-extensions
+nltk
+tensorflow-macos
+tensorflow
 
 # joblib==1.0.1
 # numpy==1.20.2
