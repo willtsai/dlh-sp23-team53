@@ -1,0 +1,501 @@
+******************Training diagnosis prediction task on mimic3******************
+
+Metal device set to: Apple M1 Pro
+
+systemMemory: 16.00 GB
+maxCacheSize: 5.33 GB
+
+Epoch 1/20
+2023-04-30 16:52:55.190050: W tensorflow/tsl/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+188/188 [==============================] - ETA: 0s - loss: 113.8886
+eval_metrics =  {f1_score: 0.11159151658684315 }, {top_k_recall: [0.17645915 0.25595456 0.32309609 0.36642582] }, {occurred: [0.01789823 0.02094837 0.02419082 0.02674324] }, {not occurred: [0.15856092 0.2350062  0.29890527 0.33968258] }
+188/188 [==============================] - 457s 2s/step - loss: 113.8886 - val_loss: 65.7542 - lr: 0.0100
+Epoch 2/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+147/188 [======================>.......] - ETA: 1:38 - loss: 69.0132
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 68.5292
+eval_metrics =  {f1_score: 0.1386971723891788 }, {top_k_recall: [0.20531939 0.29436608 0.35523535 0.39899407] }, {occurred: [0.02079542 0.02754691 0.03093091 0.03321016] }, {not occurred: [0.18452397 0.26681917 0.32430444 0.3657839 ] }
+188/188 [==============================] - 476s 3s/step - loss: 68.5292 - val_loss: 63.7667 - lr: 0.0100
+Epoch 4/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 67.3316
+eval_metrics =  {f1_score: 0.13899121258558003 }, {top_k_recall: [0.20958247 0.29509616 0.35057529 0.40350444] }, {occurred: [0.02026496 0.02654754 0.03098858 0.03494585] }, {not occurred: [0.18931751 0.26854862 0.31958671 0.36855859] }
+188/188 [==============================] - 478s 3s/step - loss: 67.3316 - val_loss: 63.3925 - lr: 0.0100
+Epoch 5/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 66.1724 
+eval_metrics =  {f1_score: 0.15021435399854094 }, {top_k_recall: [0.2078823  0.29867054 0.36266511 0.41484194] }, {occurred: [0.0199971  0.02622257 0.0301533  0.0336402 ] }, {not occurred: [0.18788521 0.27244797 0.3325118  0.38120174] }
+188/188 [==============================] - 3348s 18s/step - loss: 66.1724 - val_loss: 62.5716 - lr: 0.0100
+Epoch 6/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 63.9958
+eval_metrics =  {f1_score: 0.16984945956225672 }, {top_k_recall: [0.2273152  0.327509   0.39293859 0.44251853] }, {occurred: [0.02187915 0.02859513 0.03215524 0.03518629] }, {not occurred: [0.20543605 0.29891386 0.36078335 0.40733224] }
+188/188 [==============================] - 1547s 8s/step - loss: 63.9958 - val_loss: 61.6265 - lr: 0.0100
+Epoch 7/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 62.2936
+eval_metrics =  {f1_score: 0.16611174354920288 }, {top_k_recall: [0.22860541 0.32271465 0.3921353  0.44688823] }, {occurred: [0.02372631 0.02922976 0.03425374 0.0372011 ] }, {not occurred: [0.2048791  0.2934849  0.35788156 0.40968713] }
+188/188 [==============================] - 489s 3s/step - loss: 62.2936 - val_loss: 60.3714 - lr: 0.0100
+Epoch 8/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 60.9692
+eval_metrics =  {f1_score: 0.17432590570949472 }, {top_k_recall: [0.23707543 0.32888643 0.39172904 0.44011474] }, {occurred: [0.02465066 0.03042313 0.03400256 0.03599079] }, {not occurred: [0.21242477 0.29846331 0.35772647 0.40412395] }
+188/188 [==============================] - 481s 3s/step - loss: 60.9692 - val_loss: 60.6315 - lr: 0.0100
+Epoch 9/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 59.9389 
+eval_metrics =  {f1_score: 0.18291399117408927 }, {top_k_recall: [0.23798709 0.33381065 0.40071112 0.45503638] }, {occurred: [0.02419544 0.03024086 0.03448218 0.03736367] }, {not occurred: [0.21379164 0.30356979 0.36622894 0.41767271] }
+188/188 [==============================] - 5841s 31s/step - loss: 59.9389 - val_loss: 61.4887 - lr: 0.0100
+Epoch 10/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 58.9591
+eval_metrics =  {f1_score: 0.1833891484819464 }, {top_k_recall: [0.23771776 0.33482776 0.40337858 0.45444868] }, {occurred: [0.02264704 0.03023844 0.03471775 0.03679392] }, {not occurred: [0.21507072 0.30458932 0.36866083 0.41765476] }
+188/188 [==============================] - 498s 3s/step - loss: 58.9591 - val_loss: 60.3290 - lr: 0.0100
+Epoch 11/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 57.9669 
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 57.1447
+eval_metrics =  {f1_score: 0.19222913795482993 }, {top_k_recall: [0.24672904 0.34529532 0.41491043 0.46316054] }, {occurred: [0.0268001  0.03232004 0.03635011 0.03917601] }, {not occurred: [0.21992894 0.31297528 0.37856033 0.42398453] }
+188/188 [==============================] - 494s 3s/step - loss: 57.1447 - val_loss: 59.7532 - lr: 0.0100
+Epoch 13/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 56.2026
+eval_metrics =  {f1_score: 0.19688853786968966 }, {top_k_recall: [0.24855336 0.34570501 0.41255249 0.46337224] }, {occurred: [0.02493534 0.03216688 0.0350514  0.03736496] }, {not occurred: [0.22361802 0.31353812 0.37750109 0.42600728] }
+188/188 [==============================] - 484s 3s/step - loss: 56.2026 - val_loss: 59.8817 - lr: 0.0100
+Epoch 14/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 55.3705
+eval_metrics =  {f1_score: 0.1957700081790369 }, {top_k_recall: [0.24698033 0.34434337 0.408703   0.46260777] }, {occurred: [0.02524557 0.03135191 0.03482437 0.03750417] }, {not occurred: [0.22173476 0.31299146 0.37387863 0.4251036 ] }
+188/188 [==============================] - 482s 3s/step - loss: 55.3705 - val_loss: 60.0277 - lr: 0.0100
+Epoch 15/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 54.5655
+eval_metrics =  {f1_score: 0.2007686000251524 }, {top_k_recall: [0.24918455 0.34590092 0.41169939 0.46057886] }, {occurred: [0.02535593 0.03178316 0.03486157 0.03753894] }, {not occurred: [0.22382862 0.31411776 0.37683782 0.42303993] }
+188/188 [==============================] - 475s 3s/step - loss: 54.5655 - val_loss: 60.3466 - lr: 0.0100
+Epoch 16/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 53.6888
+eval_metrics =  {f1_score: 0.20042851344978385 }, {top_k_recall: [0.25098263 0.35013272 0.41639392 0.46474995] }, {occurred: [0.02407521 0.03181142 0.03566373 0.03795674] }, {not occurred: [0.22690742 0.3183213  0.38073019 0.42679321] }
+188/188 [==============================] - 442s 2s/step - loss: 53.6888 - val_loss: 60.4884 - lr: 0.0100
+Epoch 17/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 52.8104
+eval_metrics =  {f1_score: 0.19848278471634756 }, {top_k_recall: [0.2493588  0.34295159 0.4109899  0.46124694] }, {occurred: [0.02470087 0.03147601 0.03588961 0.03813407] }, {not occurred: [0.22465793 0.31147557 0.37510029 0.42311287] }
+188/188 [==============================] - 447s 2s/step - loss: 52.8104 - val_loss: 60.1750 - lr: 0.0100
+Epoch 18/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 51.8943
+eval_metrics =  {f1_score: 0.20925211980072098 }, {top_k_recall: [0.25285737 0.34931914 0.41108952 0.45936407] }, {occurred: [0.0255073  0.03259039 0.03579176 0.03869912] }, {not occurred: [0.22735008 0.31672874 0.37529776 0.42066495] }
+188/188 [==============================] - 463s 2s/step - loss: 51.8943 - val_loss: 61.3836 - lr: 0.0100
+Epoch 19/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 51.0081
+eval_metrics =  {f1_score: 0.2100483833990087 }, {top_k_recall: [0.25108376 0.34943629 0.41510281 0.46215002] }, {occurred: [0.02735839 0.03275971 0.03582254 0.03843907] }, {not occurred: [0.22372536 0.31667658 0.37928027 0.42371095] }
+188/188 [==============================] - 469s 2s/step - loss: 51.0081 - val_loss: 60.9450 - lr: 0.0100
+Epoch 20/20
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+188/188 [==============================] - ETA: 0s - loss: 50.1538
+eval_metrics =  {f1_score: 0.20687701543366385 }, {top_k_recall: [0.24908668 0.34694622 0.41416785 0.46089295] }, {occurred: [0.02755166 0.03262464 0.03577306 0.0382088 ] }, {not occurred: [0.22153502 0.31432158 0.3783948  0.42268415] }
+188/188 [==============================] - 472s 3s/step - loss: 50.1538 - val_loss: 61.6322 - lr: 0.0100
+Model: "cgl"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ cgl_feature (CGLFeatureExtr  multiple                 527040    
+ actor)                                                          
+                                                                 
+ classifier (Classifier)     multiple                  980880    
+                                                                 
+=================================================================
+Total params: 1,507,920
+Trainable params: 1,507,472
+Non-trainable params: 448
+_________________________________________________________________
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+******************Training diagnosis prediction task on mimic4******************
+
+Epoch 1/20
+250/250 [==============================] - ETA: 0s - loss: 110.4126
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.12004191076238724 }, {top_k_recall: [0.19987379 0.27677797 0.32838622 0.36812081] }, {occurred: [0.02104566 0.02723471 0.03195936 0.03595511] }, {not occurred: [0.17882813 0.24954325 0.29642685 0.33216569] }
+250/250 [==============================] - 1559s 6s/step - loss: 110.4126 - val_loss: 63.9062 - lr: 0.0100
+Epoch 2/20
+250/250 [==============================] - ETA: 0s - loss: 67.0733
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.13164563906149224 }, {top_k_recall: [0.21633525 0.28816212 0.3505605  0.39366072] }, {occurred: [0.02506956 0.02895635 0.03464147 0.03816639] }, {not occurred: [0.19126569 0.25920577 0.31591903 0.35549433] }
+250/250 [==============================] - 1574s 6s/step - loss: 67.0733 - val_loss: 62.7519 - lr: 0.0100
+Epoch 3/20
+250/250 [==============================] - ETA: 0s - loss: 65.6817
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.1468213362216477 }, {top_k_recall: [0.21560563 0.30474344 0.36345611 0.40564629] }, {occurred: [0.02500552 0.02926819 0.03209305 0.03550302] }, {not occurred: [0.19060011 0.27547526 0.33136306 0.37014328] }
+250/250 [==============================] - 1581s 6s/step - loss: 65.6817 - val_loss: 62.3140 - lr: 0.0100
+Epoch 4/20
+250/250 [==============================] - ETA: 0s - loss: 64.5030
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.15684003243375894 }, {top_k_recall: [0.22144268 0.30885277 0.36704422 0.40895268] }, {occurred: [0.02486841 0.03093872 0.03572433 0.03891456] }, {not occurred: [0.19657427 0.27791405 0.33131989 0.37003812] }
+250/250 [==============================] - 1592s 6s/step - loss: 64.5030 - val_loss: 61.1996 - lr: 0.0100
+Epoch 5/20
+250/250 [==============================] - ETA: 0s - loss: 63.2902
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.1717211301901424 }, {top_k_recall: [0.22323623 0.30638067 0.36093717 0.40740371] }, {occurred: [0.0254615  0.02995354 0.03454906 0.03785747] }, {not occurred: [0.19777473 0.27642713 0.32638811 0.36954624] }
+250/250 [==============================] - 1584s 6s/step - loss: 63.2902 - val_loss: 60.6068 - lr: 0.0100
+Epoch 6/20
+250/250 [==============================] - ETA: 0s - loss: 61.3433
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.1758595203451965 }, {top_k_recall: [0.24168859 0.32883145 0.39247201 0.43485156] }, {occurred: [0.02611641 0.03229469 0.03658408 0.03953961] }, {not occurred: [0.21557218 0.29653677 0.35588793 0.39531196] }
+250/250 [==============================] - 1584s 6s/step - loss: 61.3433 - val_loss: 59.1072 - lr: 0.0100
+Epoch 7/20
+250/250 [==============================] - ETA: 0s - loss: 59.7559
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.18706529099323185 }, {top_k_recall: [0.24186455 0.33396952 0.39607723 0.4407392 ] }, {occurred: [0.02618615 0.03381404 0.03831057 0.04064284] }, {not occurred: [0.21567841 0.30015547 0.35776666 0.40009636] }
+250/250 [==============================] - 1586s 6s/step - loss: 59.7559 - val_loss: 58.4786 - lr: 0.0100
+Epoch 8/20
+250/250 [==============================] - ETA: 0s - loss: 58.2965
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.1880600141149551 }, {top_k_recall: [0.24791669 0.33542615 0.39572833 0.44193356] }, {occurred: [0.02573721 0.03331419 0.03752656 0.03991387] }, {not occurred: [0.22217948 0.30211196 0.35820177 0.40201969] }
+250/250 [==============================] - 1584s 6s/step - loss: 58.2965 - val_loss: 58.3321 - lr: 0.0100
+Epoch 9/20
+250/250 [==============================] - ETA: 0s - loss: 57.1027
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.19644212152743898 }, {top_k_recall: [0.25160844 0.34853865 0.40582798 0.45500886] }, {occurred: [0.02759216 0.03556525 0.03849222 0.04061411] }, {not occurred: [0.22401627 0.3129734  0.36733576 0.41439475] }
+250/250 [==============================] - 1585s 6s/step - loss: 57.1027 - val_loss: 57.7186 - lr: 0.0100
+Epoch 10/20
+250/250 [==============================] - ETA: 0s - loss: 56.0282
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.20458572602978856 }, {top_k_recall: [0.25282099 0.3513063  0.4141394  0.45622513] }, {occurred: [0.02733547 0.03374225 0.0384003  0.0404916 ] }, {not occurred: [0.22548552 0.31756405 0.3757391  0.41573353] }
+250/250 [==============================] - 1584s 6s/step - loss: 56.0282 - val_loss: 57.6065 - lr: 0.0100
+Epoch 11/20
+250/250 [==============================] - ETA: 0s - loss: 54.9918
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.2039103984153509 }, {top_k_recall: [0.26120606 0.35232463 0.41275491 0.45556085] }, {occurred: [0.02739305 0.03444473 0.03818984 0.04059609] }, {not occurred: [0.23381301 0.31787989 0.37456507 0.41496476] }
+250/250 [==============================] - 1581s 6s/step - loss: 54.9918 - val_loss: 57.6022 - lr: 0.0100
+Epoch 12/20
+250/250 [==============================] - ETA: 0s - loss: 53.9515
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.21378049169102023 }, {top_k_recall: [0.2625508  0.35148498 0.41823606 0.46097905] }, {occurred: [0.02557932 0.03233197 0.03755681 0.03983727] }, {not occurred: [0.23697148 0.31915301 0.38067925 0.42114178] }
+250/250 [==============================] - 1584s 6s/step - loss: 53.9515 - val_loss: 57.6743 - lr: 0.0100
+Epoch 13/20
+250/250 [==============================] - ETA: 0s - loss: 52.9199
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.21678200227349642 }, {top_k_recall: [0.26330712 0.35781135 0.42114629 0.46472056] }, {occurred: [0.02633924 0.03402969 0.0380616  0.0406205 ] }, {not occurred: [0.23696787 0.32378166 0.38308469 0.42410006] }
+250/250 [==============================] - 1587s 6s/step - loss: 52.9199 - val_loss: 57.9174 - lr: 0.0100
+Epoch 14/20
+250/250 [==============================] - ETA: 0s - loss: 52.0108
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.21701285055813382 }, {top_k_recall: [0.2658112  0.35776606 0.41688752 0.4613802 ] }, {occurred: [0.02728464 0.03387293 0.03825413 0.04083035] }, {not occurred: [0.23852656 0.32389314 0.37863339 0.42054985] }
+250/250 [==============================] - 1590s 6s/step - loss: 52.0108 - val_loss: 58.1044 - lr: 0.0100
+Epoch 15/20
+250/250 [==============================] - ETA: 0s - loss: 50.9353
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.2249049516624194 }, {top_k_recall: [0.26319695 0.35799552 0.4197114  0.4647502 ] }, {occurred: [0.02742518 0.03531339 0.03916058 0.04130026] }, {not occurred: [0.23577177 0.32268214 0.38055082 0.42344994] }
+250/250 [==============================] - 1587s 6s/step - loss: 50.9353 - val_loss: 58.5171 - lr: 0.0100
+Epoch 16/20
+250/250 [==============================] - ETA: 0s - loss: 50.0095
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.22335957585950317 }, {top_k_recall: [0.2704564  0.36386965 0.42024193 0.46305727] }, {occurred: [0.02677785 0.03404483 0.03850106 0.04102237] }, {not occurred: [0.24367854 0.32982481 0.38174087 0.4220349 ] }
+250/250 [==============================] - 1585s 6s/step - loss: 50.0095 - val_loss: 58.5252 - lr: 0.0100
+Epoch 17/20
+250/250 [==============================] - ETA: 0s - loss: 49.0068
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.2258515251540087 }, {top_k_recall: [0.26861066 0.36082631 0.42023701 0.46349231] }, {occurred: [0.02581569 0.0328383  0.0381142  0.03994761] }, {not occurred: [0.24279497 0.327988   0.38212282 0.4235447 ] }
+250/250 [==============================] - 1583s 6s/step - loss: 49.0068 - val_loss: 59.0429 - lr: 0.0100
+Epoch 18/20
+250/250 [==============================] - ETA: 0s - loss: 47.9492
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.2284780796824224 }, {top_k_recall: [0.27324558 0.36831642 0.42686831 0.46687995] }, {occurred: [0.02774491 0.03531435 0.03915797 0.0410903 ] }, {not occurred: [0.24550067 0.33300207 0.38771033 0.42578965] }
+250/250 [==============================] - 1577s 6s/step - loss: 47.9492 - val_loss: 59.4204 - lr: 0.0100
+Epoch 19/20
+250/250 [==============================] - ETA: 0s - loss: 46.8056
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.23038533370036118 }, {top_k_recall: [0.26355962 0.35007522 0.40964495 0.45221884] }, {occurred: [0.02591123 0.03289769 0.03717654 0.04046883] }, {not occurred: [0.23764839 0.31717753 0.37246841 0.41175001] }
+250/250 [==============================] - 1576s 6s/step - loss: 46.8056 - val_loss: 60.6186 - lr: 0.0100
+Epoch 20/20
+250/250 [==============================] - ETA: 0s - loss: 45.8661
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1609: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, "true nor predicted", "F-score is", len(true_sum))
+
+eval_metrics =  {f1_score: 0.23525083127978336 }, {top_k_recall: [0.26968568 0.36205364 0.41536724 0.45820955] }, {occurred: [0.02664482 0.03428321 0.03746214 0.03998297] }, {not occurred: [0.24304086 0.32777044 0.3779051  0.41822657] }
+250/250 [==============================] - 1582s 6s/step - loss: 45.8661 - val_loss: 60.8166 - lr: 0.0100
+Model: "cgl"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ cgl_feature (CGLFeatureExtr  multiple                 600106    
+ actor)                                                          
+                                                                 
+ classifier (Classifier)     multiple                  1213437   
+                                                                 
+=================================================================
+Total params: 1,813,543
+Trainable params: 1,813,095
+Non-trainable params: 448
+_________________________________________________________________
+
+
+******************Training heart failure prediction task on mimic3******************
+
+Metal device set to: Apple M1 Pro
+
+systemMemory: 16.00 GB
+maxCacheSize: 5.33 GB
+
+Epoch 1/20
+2023-05-01 10:44:19.395012: W tensorflow/tsl/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+188/188 [==============================] - ETA: 0s - loss: 0.9340 - auc: 0.6447
+eval_metrics =  {auc: 0.7454059428955151 }, {f1_score: 0.2572062084257206 }
+188/188 [==============================] - 496s 3s/step - loss: 0.9340 - auc: 0.6447 - val_loss: 0.8129 - val_auc: 0.7405 - lr: 0.1000
+Epoch 2/20
+188/188 [==============================] - ETA: 0s - loss: 0.5957 - auc: 0.7574
+eval_metrics =  {auc: 0.8374635725385366 }, {f1_score: 0.7130434782608696 }
+188/188 [==============================] - 484s 3s/step - loss: 0.5957 - auc: 0.7574 - val_loss: 0.5154 - val_auc: 0.8263 - lr: 0.1000
+Epoch 3/20
+188/188 [==============================] - ETA: 0s - loss: 0.5233 - auc: 0.8007
+eval_metrics =  {auc: 0.8045895373012899 }, {f1_score: 0.6257777777777779 }
+188/188 [==============================] - 481s 3s/step - loss: 0.5233 - auc: 0.8007 - val_loss: 0.5909 - val_auc: 0.7967 - lr: 0.1000
+Epoch 4/20
+188/188 [==============================] - ETA: 0s - loss: 0.5297 - auc: 0.7969
+eval_metrics =  {auc: 0.8165541020442424 }, {f1_score: 0.6754002911208151 }
+188/188 [==============================] - 504s 3s/step - loss: 0.5297 - auc: 0.7969 - val_loss: 0.6118 - val_auc: 0.8250 - lr: 0.1000
+Epoch 5/20
+188/188 [==============================] - ETA: 0s - loss: 0.5096 - auc: 0.8190
+eval_metrics =  {auc: 0.7813469874435564 }, {f1_score: 0.5369422092172641 }
+188/188 [==============================] - 508s 3s/step - loss: 0.5096 - auc: 0.8190 - val_loss: 1.7413 - val_auc: 0.7324 - lr: 0.1000
+Epoch 6/20
+188/188 [==============================] - ETA: 0s - loss: 0.5124 - auc: 0.8173
+eval_metrics =  {auc: 0.8235490355600896 }, {f1_score: 0.6460587326120556 }
+188/188 [==============================] - 512s 3s/step - loss: 0.5124 - auc: 0.8173 - val_loss: 0.5547 - val_auc: 0.8233 - lr: 0.1000
+Epoch 7/20
+188/188 [==============================] - ETA: 0s - loss: 0.4958 - auc: 0.8285
+eval_metrics =  {auc: 0.7577514624791766 }, {f1_score: 0.6724137931034483 }
+188/188 [==============================] - 508s 3s/step - loss: 0.4958 - auc: 0.8285 - val_loss: 0.6087 - val_auc: 0.7739 - lr: 0.1000
+Epoch 8/20
+188/188 [==============================] - ETA: 0s - loss: 0.4813 - auc: 0.8382
+eval_metrics =  {auc: 0.8203464321534494 }, {f1_score: 0.6812933025404158 }
+188/188 [==============================] - 497s 3s/step - loss: 0.4813 - auc: 0.8382 - val_loss: 0.5730 - val_auc: 0.8011 - lr: 0.1000
+Epoch 9/20
+188/188 [==============================] - ETA: 0s - loss: 0.4335 - auc: 0.8632
+eval_metrics =  {auc: 0.8362927282823457 }, {f1_score: 0.7001394700139469 }
+188/188 [==============================] - 507s 3s/step - loss: 0.4335 - auc: 0.8632 - val_loss: 0.5153 - val_auc: 0.8331 - lr: 0.0100
+Epoch 10/20
+188/188 [==============================] - ETA: 0s - loss: 0.4252 - auc: 0.8683
+eval_metrics =  {auc: 0.8346655991321977 }, {f1_score: 0.6977401129943502 }
+188/188 [==============================] - 513s 3s/step - loss: 0.4252 - auc: 0.8683 - val_loss: 0.5214 - val_auc: 0.8227 - lr: 0.0100
+Epoch 11/20
+188/188 [==============================] - ETA: 0s - loss: 0.4245 - auc: 0.8681
+eval_metrics =  {auc: 0.8321689459388493 }, {f1_score: 0.7080394922425952 }
+188/188 [==============================] - 518s 3s/step - loss: 0.4245 - auc: 0.8681 - val_loss: 0.5200 - val_auc: 0.8337 - lr: 0.0100
+Epoch 12/20
+188/188 [==============================] - ETA: 0s - loss: 0.4212 - auc: 0.8720
+eval_metrics =  {auc: 0.8311057160444404 }, {f1_score: 0.6961483594864479 }
+188/188 [==============================] - 506s 3s/step - loss: 0.4212 - auc: 0.8720 - val_loss: 0.5364 - val_auc: 0.8283 - lr: 0.0100
+Epoch 13/20
+188/188 [==============================] - ETA: 0s - loss: 0.4178 - auc: 0.8735
+eval_metrics =  {auc: 0.832728540620117 }, {f1_score: 0.7071524966261808 }
+188/188 [==============================] - 503s 3s/step - loss: 0.4178 - auc: 0.8735 - val_loss: 0.5070 - val_auc: 0.8298 - lr: 0.0100
+Epoch 14/20
+188/188 [==============================] - ETA: 0s - loss: 0.4163 - auc: 0.8745
+eval_metrics =  {auc: 0.8308065481186857 }, {f1_score: 0.7084468664850136 }
+188/188 [==============================] - 504s 3s/step - loss: 0.4163 - auc: 0.8745 - val_loss: 0.4944 - val_auc: 0.8289 - lr: 0.0100
+Epoch 15/20
+188/188 [==============================] - ETA: 0s - loss: 0.4165 - auc: 0.8727
+eval_metrics =  {auc: 0.826411577583498 }, {f1_score: 0.6971428571428573 }
+188/188 [==============================] - 499s 3s/step - loss: 0.4165 - auc: 0.8727 - val_loss: 0.5170 - val_auc: 0.8282 - lr: 0.0100
+Epoch 16/20
+188/188 [==============================] - ETA: 0s - loss: 0.4172 - auc: 0.8722
+eval_metrics =  {auc: 0.8266095880091773 }, {f1_score: 0.6971428571428573 }
+188/188 [==============================] - 509s 3s/step - loss: 0.4172 - auc: 0.8722 - val_loss: 0.5080 - val_auc: 0.8225 - lr: 0.0100
+Epoch 17/20
+188/188 [==============================] - ETA: 0s - loss: 0.4137 - auc: 0.8750
+eval_metrics =  {auc: 0.8211643013029946 }, {f1_score: 0.6960227272727272 }
+188/188 [==============================] - 510s 3s/step - loss: 0.4137 - auc: 0.8750 - val_loss: 0.5128 - val_auc: 0.8187 - lr: 0.0100
+Epoch 18/20
+188/188 [==============================] - ETA: 0s - loss: 0.4088 - auc: 0.8773
+eval_metrics =  {auc: 0.8270508068924847 }, {f1_score: 0.7027777777777777 }
+188/188 [==============================] - 508s 3s/step - loss: 0.4088 - auc: 0.8773 - val_loss: 0.5092 - val_auc: 0.8241 - lr: 0.0100
+Epoch 19/20
+188/188 [==============================] - ETA: 0s - loss: 0.4076 - auc: 0.8792
+eval_metrics =  {auc: 0.8252428856145426 }, {f1_score: 0.6934812760055478 }
+188/188 [==============================] - 511s 3s/step - loss: 0.4076 - auc: 0.8792 - val_loss: 0.5183 - val_auc: 0.8178 - lr: 0.0100
+Epoch 20/20
+188/188 [==============================] - ETA: 0s - loss: 0.4073 - auc: 0.8792
+eval_metrics =  {auc: 0.8233316545492896 }, {f1_score: 0.6908077994428968 }
+188/188 [==============================] - 517s 3s/step - loss: 0.4073 - auc: 0.8792 - val_loss: 0.5132 - val_auc: 0.8220 - lr: 0.0100
+Model: "cgl"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ cgl_feature (CGLFeatureExtr  multiple                 527040    
+ actor)                                                          
+                                                                 
+ classifier (Classifier)     multiple                  201       
+                                                                 
+=================================================================
+Total params: 527,241
+Trainable params: 526,793
+Non-trainable params: 448
+_________________________________________________________________
+
+
+******************Training heart failure prediction task on mimic4******************
+
+Metal device set to: Apple M1 Pro
+
+systemMemory: 16.00 GB
+maxCacheSize: 5.33 GB
+
+Epoch 1/20
+2023-05-01 16:03:03.345732: W tensorflow/tsl/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+250/250 [==============================] - ETA: 0s - loss: 1.0301 - auc: 0.6358
+eval_metrics =  {auc: 0.7898147962357285 }, {f1_score: 0.33424657534246577 }
+250/250 [==============================] - 1604s 6s/step - loss: 1.0301 - auc: 0.6358 - val_loss: 1.3408 - val_auc: 0.7834 - lr: 0.1000
+Epoch 2/20
+250/250 [==============================] - ETA: 0s - loss: 0.5337 - auc: 0.7987
+eval_metrics =  {auc: 0.879403522148872 }, {f1_score: 0.40486725663716816 }
+250/250 [==============================] - 1593s 6s/step - loss: 0.5337 - auc: 0.7987 - val_loss: 1.3539 - val_auc: 0.8539 - lr: 0.1000
+Epoch 3/20
+250/250 [==============================] - ETA: 0s - loss: 0.5108 - auc: 0.7790
+eval_metrics =  {auc: 0.5266769669121336 }, {f1_score: 0.10309278350515463 }
+250/250 [==============================] - 1549s 6s/step - loss: 0.5108 - auc: 0.7790 - val_loss: 0.5301 - val_auc: 0.5225 - lr: 0.1000
+Epoch 4/20
+250/250 [==============================] - ETA: 0s - loss: 0.4832 - auc: 0.8048
+eval_metrics =  {auc: 0.9263833430316165 }, {f1_score: 0.7139364303178485 }
+250/250 [==============================] - 1574s 6s/step - loss: 0.4832 - auc: 0.8048 - val_loss: 0.3939 - val_auc: 0.8995 - lr: 0.1000
+Epoch 5/20
+250/250 [==============================] - ETA: 0s - loss: 0.3864 - auc: 0.8630
+eval_metrics =  {auc: 0.8817043562012159 }, {f1_score: 0.6308724832214766 }
+250/250 [==============================] - 1590s 6s/step - loss: 0.3864 - auc: 0.8630 - val_loss: 0.3377 - val_auc: 0.8663 - lr: 0.1000
+Epoch 6/20
+250/250 [==============================] - ETA: 0s - loss: 0.3602 - auc: 0.8772
+eval_metrics =  {auc: 0.8602979045020098 }, {f1_score: 0.45344129554655876 }
+250/250 [==============================] - 1583s 6s/step - loss: 0.3602 - auc: 0.8772 - val_loss: 0.5047 - val_auc: 0.8244 - lr: 0.1000
+Epoch 7/20
+250/250 [==============================] - ETA: 0s - loss: 0.3587 - auc: 0.8756
+eval_metrics =  {auc: 0.9229755670151361 }, {f1_score: 0.5480427046263345 }
+250/250 [==============================] - 1608s 6s/step - loss: 0.3587 - auc: 0.8756 - val_loss: 0.2891 - val_auc: 0.9008 - lr: 0.1000
+Epoch 8/20
+250/250 [==============================] - ETA: 0s - loss: 0.3635 - auc: 0.8417
+eval_metrics =  {auc: 0.8227923029074784 }, {f1_score: 0.6607669616519175 }
+250/250 [==============================] - 1629s 7s/step - loss: 0.3635 - auc: 0.8417 - val_loss: 0.3589 - val_auc: 0.8298 - lr: 0.1000
+Epoch 9/20
+250/250 [==============================] - ETA: 0s - loss: 0.3638 - auc: 0.8213
+eval_metrics =  {auc: 0.829571068349486 }, {f1_score: 0.0529100529100529 }
+250/250 [==============================] - 1625s 7s/step - loss: 0.3638 - auc: 0.8213 - val_loss: 0.3811 - val_auc: 0.8058 - lr: 0.0100
+Epoch 10/20
+250/250 [==============================] - ETA: 0s - loss: 0.3395 - auc: 0.8392
+eval_metrics =  {auc: 0.8615553370655001 }, {f1_score: 0.35807860262008734 }
+250/250 [==============================] - 1621s 6s/step - loss: 0.3395 - auc: 0.8392 - val_loss: 0.3521 - val_auc: 0.8421 - lr: 0.0100
+Epoch 11/20
+250/250 [==============================] - ETA: 0s - loss: 0.3139 - auc: 0.8620
+eval_metrics =  {auc: 0.8959307341934707 }, {f1_score: 0.5134099616858238 }
+250/250 [==============================] - 1618s 6s/step - loss: 0.3139 - auc: 0.8620 - val_loss: 0.3246 - val_auc: 0.8754 - lr: 0.0100
+Epoch 12/20
+250/250 [==============================] - ETA: 0s - loss: 0.2753 - auc: 0.9012
+eval_metrics =  {auc: 0.9032077907311167 }, {f1_score: 0.6481481481481481 }
+250/250 [==============================] - 1610s 6s/step - loss: 0.2753 - auc: 0.9012 - val_loss: 0.3010 - val_auc: 0.8934 - lr: 0.0100
+Epoch 13/20
+250/250 [==============================] - ETA: 0s - loss: 0.2505 - auc: 0.9169
+eval_metrics =  {auc: 0.9239387068510009 }, {f1_score: 0.7499999999999999 }
+250/250 [==============================] - 1550s 6s/step - loss: 0.2505 - auc: 0.9169 - val_loss: 0.2685 - val_auc: 0.9126 - lr: 0.0100
+Epoch 14/20
+250/250 [==============================] - ETA: 0s - loss: 0.2417 - auc: 0.9192
+eval_metrics =  {auc: 0.9271391402639271 }, {f1_score: 0.7006369426751591 }
+250/250 [==============================] - 1527s 6s/step - loss: 0.2417 - auc: 0.9192 - val_loss: 0.2726 - val_auc: 0.9103 - lr: 0.0100
+Epoch 15/20
+250/250 [==============================] - ETA: 0s - loss: 0.2446 - auc: 0.9182
+eval_metrics =  {auc: 0.9028365805860439 }, {f1_score: 0.6951871657754012 }
+250/250 [==============================] - 1524s 6s/step - loss: 0.2446 - auc: 0.9182 - val_loss: 0.3604 - val_auc: 0.8835 - lr: 0.0100
+Epoch 16/20
+250/250 [==============================] - ETA: 0s - loss: 0.2545 - auc: 0.9143
+eval_metrics =  {auc: 0.9236711680077051 }, {f1_score: 0.6598639455782314 }
+250/250 [==============================] - 1512s 6s/step - loss: 0.2545 - auc: 0.9143 - val_loss: 0.2978 - val_auc: 0.9013 - lr: 0.0100
+Epoch 17/20
+250/250 [==============================] - ETA: 0s - loss: 0.2333 - auc: 0.9264
+eval_metrics =  {auc: 0.9279952645624736 }, {f1_score: 0.7393939393939394 }
+250/250 [==============================] - 1566s 6s/step - loss: 0.2333 - auc: 0.9264 - val_loss: 0.2637 - val_auc: 0.9137 - lr: 0.0100
+Epoch 18/20
+250/250 [==============================] - ETA: 0s - loss: 0.2328 - auc: 0.9266
+eval_metrics =  {auc: 0.9324330651256428 }, {f1_score: 0.725 }
+250/250 [==============================] - 1555s 6s/step - loss: 0.2328 - auc: 0.9266 - val_loss: 0.2713 - val_auc: 0.9157 - lr: 0.0100
+Epoch 19/20
+250/250 [==============================] - ETA: 0s - loss: 0.2352 - auc: 0.9220
+eval_metrics =  {auc: 0.9324263766545605 }, {f1_score: 0.7554347826086957 }
+250/250 [==============================] - 1577s 6s/step - loss: 0.2352 - auc: 0.9220 - val_loss: 0.2928 - val_auc: 0.9120 - lr: 0.0100
+Epoch 20/20
+250/250 [==============================] - ETA: 0s - loss: 0.2312 - auc: 0.9230
+eval_metrics =  {auc: 0.9314799579964016 }, {f1_score: 0.732919254658385 }
+250/250 [==============================] - 1593s 6s/step - loss: 0.2312 - auc: 0.9230 - val_loss: 0.2715 - val_auc: 0.9125 - lr: 0.0100
+Model: "cgl"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ cgl_feature (CGLFeatureExtr  multiple                 600106    
+ actor)                                                          
+                                                                 
+ classifier (Classifier)     multiple                  201       
+                                                                 
+=================================================================
+Total params: 600,307
+Trainable params: 599,859
+Non-trainable params: 448
+_________________________________________________________________

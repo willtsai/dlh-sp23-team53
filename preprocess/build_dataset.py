@@ -70,7 +70,6 @@ def build_cgl_code_xy(pids,
         for k, admission in enumerate(admissions[:-1]):
             codes = admission_codes_encoded[admission[EHRParser.adm_id_col]]
             x[i][k][:len(codes)] = codes
-        # codes = np.array(admission_codes_encoded[admissions[-1]['admission_id']]) - 1
         codes = np.array(admission_codes_encoded[admissions[-1][EHRParser.adm_id_col]])
         y[i][codes] = 1
         lens[i] = len(admissions) - 1
