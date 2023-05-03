@@ -1,0 +1,131 @@
+training for m task on mimic3 dataset:
+1223574
+Epoch 1 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m5.6s, loss: 1626.2027
+    Evaluation: loss: 163.1140 --- f1_score: 0.1123 --- top_k_recall: 0.1756, 0.2632, 0.3273, 0.3668  --- occurred: 0.0951, 0.1228, 0.1437, 0.1558  --- not occurred: 0.0805, 0.1404, 0.1836, 0.2110
+Epoch 2 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m4.0s, loss: 1562.1431
+    Evaluation: loss: 134.4444 --- f1_score: 0.1123 --- top_k_recall: 0.1955, 0.2752, 0.3324, 0.3766  --- occurred: 0.0996, 0.1288, 0.1473, 0.1612  --- not occurred: 0.0959, 0.1464, 0.1851, 0.2153
+Epoch 3 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.1s, loss: 1560.7695
+    Evaluation: loss: 137.2259 --- f1_score: 0.1124 --- top_k_recall: 0.1917, 0.2791, 0.3381, 0.3854  --- occurred: 0.0939, 0.1256, 0.1475, 0.1654  --- not occurred: 0.0978, 0.1536, 0.1906, 0.2200
+Epoch 4 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.1s, loss: 1559.4063
+    Evaluation: loss: 124.5674 --- f1_score: 0.1206 --- top_k_recall: 0.1994, 0.2851, 0.3424, 0.3879  --- occurred: 0.1034, 0.1340, 0.1564, 0.1712  --- not occurred: 0.0960, 0.1511, 0.1860, 0.2167
+Epoch 5 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m2.9s, loss: 1558.2666
+    Evaluation: loss: 122.9084 --- f1_score: 0.1331 --- top_k_recall: 0.2086, 0.2995, 0.3629, 0.4069  --- occurred: 0.1085, 0.1414, 0.1640, 0.1788  --- not occurred: 0.1001, 0.1581, 0.1989, 0.2281
+Epoch 6 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m2.9s, loss: 1558.1065
+    Evaluation: loss: 118.9192 --- f1_score: 0.1409 --- top_k_recall: 0.2119, 0.2992, 0.3667, 0.4128  --- occurred: 0.1145, 0.1440, 0.1690, 0.1840  --- not occurred: 0.0974, 0.1551, 0.1977, 0.2288
+Epoch 7 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m2.8s, loss: 1556.8987
+    Evaluation: loss: 118.1830 --- f1_score: 0.1546 --- top_k_recall: 0.2208, 0.3216, 0.3829, 0.4351  --- occurred: 0.1211, 0.1552, 0.1770, 0.1949  --- not occurred: 0.0998, 0.1663, 0.2059, 0.2402
+Epoch 8 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.0s, loss: 1556.0147
+    Evaluation: loss: 114.8169 --- f1_score: 0.1552 --- top_k_recall: 0.2272, 0.3189, 0.3829, 0.4274  --- occurred: 0.1155, 0.1521, 0.1761, 0.1920  --- not occurred: 0.1117, 0.1668, 0.2068, 0.2354
+Epoch 9 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.0s, loss: 1555.9283
+    Evaluation: loss: 101.4400 --- f1_score: 0.1520 --- top_k_recall: 0.2242, 0.3075, 0.3715, 0.4195  --- occurred: 0.1196, 0.1526, 0.1712, 0.1865  --- not occurred: 0.1045, 0.1548, 0.2003, 0.2329
+Epoch 10 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.0s, loss: 1556.2705
+    Evaluation: loss: 113.9943 --- f1_score: 0.1647 --- top_k_recall: 0.2268, 0.3150, 0.3833, 0.4387  --- occurred: 0.1215, 0.1550, 0.1775, 0.1982  --- not occurred: 0.1054, 0.1601, 0.2059, 0.2405
+Epoch 11 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.1s, loss: 1555.0683
+    Evaluation: loss: 119.6347 --- f1_score: 0.1701 --- top_k_recall: 0.2362, 0.3285, 0.3940, 0.4464  --- occurred: 0.1313, 0.1664, 0.1861, 0.2031  --- not occurred: 0.1049, 0.1622, 0.2080, 0.2433
+Epoch 12 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m2.9s, loss: 1553.7632
+    Evaluation: loss: 115.2236 --- f1_score: 0.1683 --- top_k_recall: 0.2406, 0.3334, 0.3923, 0.4404  --- occurred: 0.1303, 0.1683, 0.1903, 0.2052  --- not occurred: 0.1103, 0.1651, 0.2020, 0.2352
+Epoch 13 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.0s, loss: 1553.8938
+    Evaluation: loss: 105.4897 --- f1_score: 0.1802 --- top_k_recall: 0.2398, 0.3288, 0.3910, 0.4411  --- occurred: 0.1365, 0.1707, 0.1957, 0.2116  --- not occurred: 0.1033, 0.1582, 0.1953, 0.2295
+Epoch 14 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m2.9s, loss: 1553.6091
+    Evaluation: loss: 112.3741 --- f1_score: 0.1826 --- top_k_recall: 0.2347, 0.3281, 0.3925, 0.4394  --- occurred: 0.1315, 0.1651, 0.1882, 0.2026  --- not occurred: 0.1032, 0.1631, 0.2043, 0.2368
+Epoch 15 / 20:
+    Step 188 / 188, LR: 0.001, time cost: 1m2.8s, loss: 1551.3183
+    Evaluation: loss: 108.8998 --- f1_score: 0.1920 --- top_k_recall: 0.2505, 0.3451, 0.4076, 0.4566  --- occurred: 0.1416, 0.1782, 0.2000, 0.2155  --- not occurred: 0.1089, 0.1669, 0.2077, 0.2411
+Epoch 16 / 20:
+    Step 188 / 188, LR: 0.001, time cost: 1m3.1s, loss: 1550.7782
+    Evaluation: loss: 104.6086 --- f1_score: 0.1971 --- top_k_recall: 0.2531, 0.3496, 0.4104, 0.4573  --- occurred: 0.1438, 0.1817, 0.2019, 0.2168  --- not occurred: 0.1093, 0.1679, 0.2085, 0.2405
+Epoch 17 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.8s, loss: 1549.6467
+    Evaluation: loss: 104.5333 --- f1_score: 0.1972 --- top_k_recall: 0.2530, 0.3503, 0.4108, 0.4575  --- occurred: 0.1437, 0.1816, 0.2019, 0.2170  --- not occurred: 0.1093, 0.1687, 0.2090, 0.2405
+Epoch 18 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.9s, loss: 1549.3335
+    Evaluation: loss: 104.5459 --- f1_score: 0.1971 --- top_k_recall: 0.2530, 0.3501, 0.4105, 0.4577  --- occurred: 0.1434, 0.1813, 0.2018, 0.2171  --- not occurred: 0.1096, 0.1689, 0.2087, 0.2406
+Epoch 19 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.6s, loss: 1550.1769
+    Evaluation: loss: 104.5535 --- f1_score: 0.1977 --- top_k_recall: 0.2533, 0.3502, 0.4107, 0.4578  --- occurred: 0.1438, 0.1809, 0.2021, 0.2173  --- not occurred: 0.1095, 0.1693, 0.2086, 0.2405
+Epoch 20 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.7s, loss: 1550.2317
+    Evaluation: loss: 104.5061 --- f1_score: 0.1973 --- top_k_recall: 0.2535, 0.3500, 0.4114, 0.4580  --- occurred: 0.1438, 0.1810, 0.2025, 0.2174  --- not occurred: 0.1096, 0.1690, 0.2089, 0.2406
+Evaluating model on test data...
+    Evaluation: loss: 104.0538 --- f1_score: 0.1982 --- top_k_recall: 0.2506, 0.3472, 0.4091, 0.4577  --- occurred: 0.1481, 0.1841, 0.2043, 0.2180  --- not occurred: 0.1024, 0.1631, 0.2048, 0.2397
+Test loss: 104.05380111694336, F1 score: 0.19817545087616334, AUC or TopK: [0.25055939897611385, 0.34723413999991043, 0.40909727170768845, 0.457659402627601]
+training for h task on mimic3 dataset:
+486845
+Epoch 1 / 20:
+    Step 188 / 188, LR: 0.01, time cost: 1m3.7s, loss: 0.5231
+    Evaluation: loss: 0.4683 --- auc: 0.8556 --- f1_score: 0.7258
+Epoch 2 / 20:
+    Step 188 / 188, LR: 0.001, time cost: 1m2.4s, loss: 0.4212
+    Evaluation: loss: 0.4601 --- auc: 0.8589 --- f1_score: 0.7317
+Epoch 3 / 20:
+    Step 188 / 188, LR: 0.0001, time cost: 1m2.2s, loss: 0.3919
+    Evaluation: loss: 0.4629 --- auc: 0.8581 --- f1_score: 0.7248
+Epoch 4 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.3s, loss: 0.3891
+    Evaluation: loss: 0.4629 --- auc: 0.8580 --- f1_score: 0.7248
+Epoch 5 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.1s, loss: 0.3888
+    Evaluation: loss: 0.4628 --- auc: 0.8580 --- f1_score: 0.7248
+Epoch 6 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.2s, loss: 0.3885
+    Evaluation: loss: 0.4629 --- auc: 0.8579 --- f1_score: 0.7248
+Epoch 7 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.3s, loss: 0.3881
+    Evaluation: loss: 0.4629 --- auc: 0.8579 --- f1_score: 0.7248
+Epoch 8 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.3s, loss: 0.3878
+    Evaluation: loss: 0.4629 --- auc: 0.8578 --- f1_score: 0.7248
+Epoch 9 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.4s, loss: 0.3875
+    Evaluation: loss: 0.4630 --- auc: 0.8578 --- f1_score: 0.7248
+Epoch 10 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.3s, loss: 0.3872
+    Evaluation: loss: 0.4631 --- auc: 0.8577 --- f1_score: 0.7248
+Epoch 11 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.2s, loss: 0.3869
+    Evaluation: loss: 0.4632 --- auc: 0.8576 --- f1_score: 0.7263
+Epoch 12 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.4s, loss: 0.3866
+    Evaluation: loss: 0.4633 --- auc: 0.8576 --- f1_score: 0.7263
+Epoch 13 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.2s, loss: 0.3862
+    Evaluation: loss: 0.4634 --- auc: 0.8573 --- f1_score: 0.7263
+Epoch 14 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.1s, loss: 0.3859
+    Evaluation: loss: 0.4635 --- auc: 0.8574 --- f1_score: 0.7263
+Epoch 15 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.1s, loss: 0.3856
+    Evaluation: loss: 0.4636 --- auc: 0.8573 --- f1_score: 0.7297
+Epoch 16 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.0s, loss: 0.3853
+    Evaluation: loss: 0.4637 --- auc: 0.8572 --- f1_score: 0.7297
+Epoch 17 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.3s, loss: 0.3850
+    Evaluation: loss: 0.4638 --- auc: 0.8571 --- f1_score: 0.7263
+Epoch 18 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.0s, loss: 0.3847
+    Evaluation: loss: 0.4639 --- auc: 0.8569 --- f1_score: 0.7263
+Epoch 19 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.0s, loss: 0.3843
+    Evaluation: loss: 0.4640 --- auc: 0.8569 --- f1_score: 0.7263
+Epoch 20 / 20:
+    Step 188 / 188, LR: 1e-05, time cost: 1m2.1s, loss: 0.3840
+    Evaluation: loss: 0.4642 --- auc: 0.8568 --- f1_score: 0.7263
+Evaluating model on test data...
+    Evaluation: loss: 0.4644 --- auc: 0.8538 --- f1_score: 0.6964
+Test loss: 0.4644375519752502, F1 score: 0.6964028776978417, AUC or TopK: 0.8537951280826133
+
