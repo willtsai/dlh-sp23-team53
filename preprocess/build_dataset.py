@@ -53,6 +53,30 @@ def build_code_xy(pids, patient_admission, admission_codes_encoded, max_admissio
     return x, y, lens
 
 
+def build_cgl_code_xy(pids,
+                  patient_admission,
+                  admission_codes_encoded,
+                  max_admission_num,
+                  code_num,
+                  max_code_num_in_a_visit):
+    print('building train/valid/test codes features and labels for CGL...')
+    n = len(pids)
+    x = np.zeros((n, max_admission_num, max_code_num_in_a_visit), dtype=int)
+    y = np.zeros((n, code_num), dtype=int)
+    lens = np.zeros((n, ), dtype=int)
+    for i, pid in enumerate(pids):
+        print('\r\t%d / %d' % (i + 1, len(pids)), end='')
+        admissions = patient_admission[pid]
+        for k, admission in enumerate(admissions[:-1]):
+            codes = admission_codes_encoded[admission[EHRParser.adm_id_col]]
+            x[i][k][:len(codes)] = codes
+        codes = np.array(admission_codes_encoded[admissions[-1][EHRParser.adm_id_col]])
+        y[i][codes] = 1
+        lens[i] = len(admissions) - 1
+    print('\r\t%d / %d' % (len(pids), len(pids)))
+    return x, y, lens
+
+
 def build_heart_failure_y(hf_prefix, codes_y, code_map):
     hf_list = np.array([cid for code, cid in code_map.items() if code.startswith(hf_prefix)])
     hfs = np.zeros((len(code_map),), dtype=int)

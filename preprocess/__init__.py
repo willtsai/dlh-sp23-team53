@@ -17,8 +17,9 @@ def load_sparse(path):
     return mat
 
 
-def save_data(path, code_x, visit_lens, codes_y, hf_y, divided, neighbors):
+def save_data(path, code_x, code_x_cgl, visit_lens, codes_y, hf_y, divided, neighbors):
     save_sparse(os.path.join(path, 'code_x'), code_x)
+    save_sparse(os.path.join(path, 'code_x_cgl'), code_x_cgl)
     np.savez(os.path.join(path, 'visit_lens'), lens=visit_lens)
     save_sparse(os.path.join(path, 'code_y'), codes_y)
     np.savez(os.path.join(path, 'hf_y'), hf_y=hf_y)
