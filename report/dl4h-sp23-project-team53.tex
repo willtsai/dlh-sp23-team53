@@ -221,7 +221,7 @@ epochs (20 instead of 200), we had to adjust the learning rates accordingly:
 \end{itemize}
 
 \subsection{Implementation}
-In our preliminary reproduction implementation, we built Python notebooks
+In our reproduction implementation, we built Python notebooks
 \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/chet.ipynb}{chet.ipynb} 
 for reproducing the main Chet model and 
 \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/cgl.ipynb}{cgl.ipynb}
@@ -246,7 +246,7 @@ for a combined MIMIC-III/MIMIC-IV training set for both diagnosis and heart fail
 tasks. In order to unblock ourselves from the computational constraints we have with the CPUs on
 our local machine, we explored three different computational resources:
 \begin{itemize}
-  \item We will explore with Google Colab to utilize their free standard 
+  \item We explored with Google Colab to utilize their free standard 
   GPUs(NVIDIA T4 Tensor Core GPUs). This worked pretty well for us and it took around 8 minutes for one epoch and around 2 hours in total 
   for a combined MIMIC-III/MIMIC-IV training set for both diagnosis and heart failure prediction
   tasks.
@@ -410,7 +410,7 @@ training for one time which may have led to some errors.
 \subsection{Recommendations for reproducibility}
 \begin{itemize}
     \item More descriptive names for variables in codebase to better align with the equations listed in the paper.
-    \item Data preprocessing was quite complicated so more code documentation on the various functions used will be really helpful.
+    \item Data preprocessing is quite complicated so more code documentation on the various functions used will be really helpful.
 \end{itemize}
 % % Describe a set of recommendations to the original authors or others who work
 % % in this area for improving reproducibility.
