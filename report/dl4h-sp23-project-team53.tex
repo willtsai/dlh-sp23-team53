@@ -87,25 +87,20 @@ training/validation/test sets randomly using the same ratios they used. We will
 build the diagnosis graphs and calculate the adjacency matrices for their
 corresponding subgraphs using the same methodology described by the authors. We
 will train the model and at least one listed baseline model for diagnosis
-prediction and hearth failure prediction respectively and compare the
+prediction and heart failure prediction respectively and compare the
 performance.
 \subsection{Addressed claims from the original paper}
 % \# TODO: Clearly itemize the claims you are testing:
 \begin{itemize}
     \item By utilizing disease combinational information and the dynamic scheme
     of diseases, the Chet model has higher accuracy for diagnosis prediction and
-    hearth failure prediction than CGL \cite{cgl}, which is the most performant
+    heart failure prediction than CGL \cite{cgl}, which is the most performant
     of the baseline models. 
     \item The designed global disease graph and visit subgraphs can integrate
     global and local context from disease combinations to inform the deep
     learning model, so the Chet model has higher accuracy for diagnosis
-    prediction and hearth failure prediction than $Chet_{d-}$ model where
+    prediction and heart failure prediction than $Chet_{d-}$ model where
     dynamic part of GNN is removed in Chet.
-    \item The proposed three diagnosis roles and corresponding transition
-    functions can extract historical context and learn the disease development
-    schemes, so the Chet model has higher accuracy for diagnosis prediction and
-    heart failure prediction than $Chet_{t-}$ model where transaction functions
-    are removed in Chet.
     \item The Chet model has higher accuracy for diagnosis prediction and heart
     failure prediction than $Chet_{att-}$ model where attention from the final
     patient embedding layer is removed in Chet. This is an additional ablation
@@ -206,18 +201,35 @@ diagnose codes per visit. We split the data into training set, validation set
 and test set with a size of 8000, 1000 and 1000 respectively. 
 
 \subsection{Hyperparameters}
-\#TODO
 % Describe how you set the hyperparameters and what the source was for
 % their value (e.g. paper, code or your guess). 
+The authors had randomly initialized model parameters and tuned on the
+validation dataset to arrive at the optimal values described in their paper.
+Thus, we set most of the hyperparameters to the same values as the original 
+paper for our reproduction experiments$: batch size = 32, hidden size = 150,
+dropout rate = 0.45$ (diagnosis prediction), and $dropout rate = 0.0$ (heart
+failure prediction). The only hyperparameters we modified were the number of
+epochs and learning rate, the latter of which the authors had set as a step
+function change at specific epochs. Given that we ran just a fraction of the
+epochs (20 instead of 200), we had to adjust the learning rates accordingly: 
+\begin{itemize}
+  \item $LR_{diag} = 0.01$ for epochs 1 through 14,
+  $1e-3$ for epochs 15 through 17, and $1e-5$ for epochs 18 through 20
+  \item $LR_{hf} = 0.01$ for epochs 1 through
+  1, $1e-3$ for epochs 2 through 2, $1e-4$ for epochs 3 through 3, and $1e-$ 4
+  through 20
+\end{itemize}
 
 \subsection{Implementation}
-In our preliminary reproduction implementation, we built a 
-\href{https://github.com/willtsai/dlh-sp23-team53/blob/main/notebook.ipynb}{python
-notebook} to build a complete flow including hyperparameters setting, data
-preprocessing, data loading, model building, model training and evaluation. For
-now, we kept the same hyperparameters as the original paper and reused the
+In our preliminary reproduction implementation, we built Python notebooks
+\href{https://github.com/willtsai/dlh-sp23-team53/blob/main/chet.ipynb}{chet.ipynb} 
+for reproducing the main Chet model and 
+\href{https://github.com/willtsai/dlh-sp23-team53/blob/main/cgl.ipynb}{cgl.ipynb}
+for reproducing the baseline CGL model. The notebooks contain complete model
+flows, including hyperparameters setting, data preprocessing, data loading,
+model building, model training and evaluation. We reused the
 \href{https://github.com/LuChang-CS/Chet}{author's code} in data preprocessing.
-Our major code efforts went into model rebuilding and the training/validation
+Our major coding efforts went into model rebuilding and the training/validation
 flow. In training/validation part, we built our own training and validation
 method to streamline the training, validation and test process while reusing the
 existing schedulers and metrics. In model rebuilding part, we tried to follow
@@ -248,7 +260,7 @@ like to further explore the following computational resources:
 \begin{table*}[ht]
   \centering
   \begin{tabular}{lcccc|cccc} \hline \hline
-    \cline{2-9} {\bf Models} & \multicolumn{4}{c}{\bf MIMIC-III} & \multicolumn{4}{c}{\bf MIMIC-IV} \\
+    {\bf Models} & \multicolumn{4}{c}{\bf MIMIC-III} & \multicolumn{4}{c}{\bf MIMIC-IV} \\
     \cline{2-9} & \bf w-F1 & \bf R@10 & \bf R@20 & \# \bf Params & \bf w-F1 & \bf R@10 & \bf R@20 & \#
     \bf Params \\ \hline
     {Orig CGL} & 21.92 & 26.64 & 36.72 & 1.53M & 25.41 & 28.52 &
@@ -285,70 +297,55 @@ like to further explore the following computational resources:
 
 \section{Results}
 We evaluated prediction performance for our models against the test datasets.
-Our preliminary results are from training each of our reproduced Chet models one
-time with 10 epochs instead of the 200 epochs originally used in the paper. From
-our more limited runs, we have found that our Chet model performance results
-align more closely with results from the original paper for the heart failure
-prediction task than for the diagnosis prediction task. Additionally, we also
+Our reproduction experiment results are from training each of our reproduced
+Chet models once with 20 epochs instead of the 200 epochs originally used in the
+paper. Our reproduced Chet model performance directionally aligns with that of
+the original paper across both diagnosis and heart failure prediction tasks. We
 make the same observation as the original paper that MIMIC-IV trained models
-outperform MIMIC-III trained models in terms of AUC and F1 score. Since we have
-not yet reproduced results from any of the baseline models, we are not in a
-position to determine whether our work supports the claims from the original
-paper that Chet outperforms all the baseline models. The plan for finalizing our
-experiment results is as follows: 
-\begin{itemize}
-    \item Retrain the reproduced Chet model for \emph{diagnosis} prediction
-    using as close to the original 200 epochs as we are computationally able to,
-    then collect, analyze, and compare the results.
-    \item Retrain the reproduced Chet model for \emph{heart failure} prediction
-    using as close to the original 200 epochs as we are computationally able to,
-    then collect, analyze, and compare the results.
-    \item Reproduce at least one of the baseline models (likely RETAIN) to
-    compare reproduced Chet prediction results against those from a reproduced
-    baseline model.
-    \item Investigate the discrepancy in the number of parameters between our
-    reproduced Chet models and the original Chet models, making any necessary
-    changes to our code as needed.
-    \item Implement at least one of the ablation studies from the original paper
-    - collect, analyze, and compare the results.
-    \item Implement an additional ablation study of our own - collect, analyze,
-    and compare the results.
-\end{itemize}
+outperform MIMIC-III trained models in terms of AUC and F1 score. Our experiment
+results indicate that our work supports the claims from the original paper that
+Chet outperforms the most performant baseline model (CGL), with our results
+falling within the same order of magnitude as the original paper for Chet model
+performance improvement over CGL. Interestingly, the number of parameters in our
+reproduction of Chet model were about 0.9M and 0.3M smaller than the originals
+for diagnosis and heart failure prediction tasks, respectfully, which suggests
+that our Chet model has reduced space complexity.
 
 \subsection{Diagnosis Prediction Results}
 Model performance results for the diagnosis prediction task from our preliminary
 experiments are summarized in Table~\ref{tab:diag}. Compared to the 200-epoch
-Chet model performance results from the original paper, our reproduced 10-epoch
-Chet model performed only approximately half as well in terms of F1 score and
-approximately 73\% as well in terms of R@10 and R@20, across both MIMIC-III and
-MIMIC-IV datasets. We suspect that this large discrepancy in performance is due
-to having trained our reproduced Chet models for only 10 epochs instead of the
-200 epochs used in the original paper. Interestingly, for the Chet model, the
-number of parameters in our experiments were approximately 58\% of the number of
-parameters in the original experiment despite using the same hyperparameters and
-datasets.
+Chet model performance results from the original paper, our reproduced 20-epoch
+Chet model performed only approximately 93-95\% as well in terms of F1 score,
+R@10, and R@20; across both MIMIC-III and MIMIC-IV datasets. We observe similar
+patterns for the original vs. reproduced CGL model performance. Thus, our
+experiment results for the diagnosis prediction task confirm the original
+paper's claim that Chet outperforms CGL, and by the same order of magnitude. 
 
 \subsection{Heart Failure Prediction Results}
 Model performance results for the heart failure prediction task from our
 preliminary experiments are summarized in Table~\ref{tab:hf}. Compared to the
 200-epoch Chet model performance results from the original paper, our reproduced
-10-epoch Chet model achieved similar levels of performance in terms of AUC and
-F1 score, across both MIMIC-III and MIMIC-IV datasets. This is suprising given
-that we trained on 95\% less epochs than the original paper, but we suspect that
-the decent prediction performance can be attributed to the fact that the heart
+20-epoch Chet model performed about 99\% as well as the original in terms of AUC
+and F1 score for the MIMIC-III dataset. Surprisingly, our Chet model
+outperformed the original Chet model by a magnitude of 2\% in terms of AUC and
+5\% in terms of F1 score for the MIMIC-IV dataset. We observe similar patterns
+for the original vs. reproduced CGL model performance. We suspect that the
+higher prediction performance can be attributed to the fact that the heart
 failure prediction task is a much easier task than the diagnosis prediction
 task. Intuitively, predicting a general diagnosis is much more ambiguous and
 involves more complexity than predicting a single specific condition such as
 heart failure. Indeed, we observe in the original paper that the prediction
 performance for heart failure is much better than that of diagnosis prediction,
 across all baseline models and Chet, for both MIMIC-III and MIMIC-IV datasets.
-Similar to our diagnosis prediction Chet models, we observe that the number of
-parameters in our experiments were approximately 68\% of the number of
-parameters in the original experiment despite using the same hyperparameters and
-datasets. We would have expected the space complexity of our Chet models to be
-the same of the original Chet models. We think that this difference might be due
-to how we are computing data embeddings in the model layers and plan to
-investigate this further to hopefully resolve this discrepancy.
+Our repro Chet models outperform our repro CGL models in all scenarios, with the
+lone exception of AUC for MIMIC-IV, where CGL and Chet have similar performance
+(CGL slightly outperforms by 0.19\%). Thus, we conclude our experiment results
+for the heart failure prediction task confirm the original paper's claim that
+Chet outperforms CGL by the same order of magnitude as the original paper, with
+the exception of when measured by AUC on MIMIC-IV data. We suspect that this
+might be due to random noise or fluctuations in the model training runs, which
+the original paper normalizes by averaging over 5 training runs while we opted to 
+train each model just once given limitations in compute capacity.
 
 \subsection{Additional results not present in the original paper}
 We plan to complete at least one ablation study from the original paper as well
@@ -403,7 +400,16 @@ results for these additional experiments in the final report.
 % % in this area for improving reproducibility.
 
 \section{Communication with original authors}
-\#TODO
+We communicated via email with one of the original authors, Chang Lu, who is
+also the owner of the original Chet and CGL experiment code repos. We learned
+through our correspondence that they had experimented with different LRs and
+observed where the F1 scores began to degrade in their 200-epoch runs and
+lowered the LR at those respective epochs. We conducted the same experiments to
+determine the optimal LR step function scheduler for our own 20-epoch training
+runs. Additionally, we confirmed with them the needed modifications we had to
+make on the preprocessing code for CGL to exclude clinical notes from the input
+data so that Chet and CGL can both be trained on the same cuts of MIMIC-IV data
+for fair comparison.
 % Document the extent of (or lack of) communication with the original authors.
 % To make sure the reproducibility report is a fair assessment of the original
 % research we recommend getting in touch with the original authors. You can ask
