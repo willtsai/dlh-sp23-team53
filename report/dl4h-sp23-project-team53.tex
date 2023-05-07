@@ -245,7 +245,8 @@ and Apple M1 PRO chip, and it took around 40 minutes for one epoch and around 14
 for a combined MIMIC-III/MIMIC-IV training set for both diagnosis and heart failure prediction
 tasks. In order to unblock ourselves from the computational constraints we have with the CPUs on
 our local machine, we explored three different computational resources:
-  \item We will explore with Google Colab to utilize their free standard
+\begin{itemize}
+  \item We will explore with Google Colab to utilize their free standard 
   GPUs(NVIDIA T4 Tensor Core GPUs). This worked pretty well for us and it took around 8 minutes for one epoch and around 2 hours in total 
   for a combined MIMIC-III/MIMIC-IV training set for both diagnosis and heart failure prediction
   tasks.
@@ -352,16 +353,6 @@ might be due to random noise or fluctuations in the model training runs, which
 the original paper normalizes by averaging over 5 training runs while we opted to 
 train each model just once given limitations in compute capacity.
 
-\subsection{Ablation studies}
-To help us better understand the effectiveness of the design of each module in Chet,
-we also conducted two ablations studies with two variants of Chet:
-\begin{itemize}
-  \item $Chet_{d-}$: This ablation study is also conducted in the original paper, and we followed the similar approach. 
-  We removed the dynamic part of GNN in Chet and instead of using dynamic subgraphs, we used a universal embedding matrix
-  for all diseases and only used the global combination graph for the aggregation of diagnoses and neighbors.
-  \item $Chet_{att-}$: This ablation study is a new one we proposed for us to better understand the effectiveness of attentions.
-  In the final embedding layer of the model, we removed the location-based attention applied after max pooling.  
-\end{itemize}
 \begin{table*}[ht]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|}
@@ -377,6 +368,17 @@ we also conducted two ablations studies with two variants of Chet:
   \caption{Diagnosis prediction and heart failure prediction for Chet variants on the MIMIC-III dataset}
   \label{tab:ablation}
   \end{table*}
+
+\subsection{Ablation studies}
+To help us better understand the effectiveness of the design of each module in Chet,
+we also conducted two ablations studies with two variants of Chet:
+\begin{itemize}
+  \item $Chet_{d-}$: This ablation study is also conducted in the original paper, and we followed the similar approach. 
+  We removed the dynamic part of GNN in Chet and instead of using dynamic subgraphs, we used a universal embedding matrix
+  for all diseases and only used the global combination graph for the aggregation of diagnoses and neighbors.
+  \item $Chet_{att-}$: This ablation study is a new one we proposed for us to better understand the effectiveness of attentions.
+  In the final embedding layer of the model, we removed the location-based attention applied after max pooling.  
+\end{itemize}
 Table 3 shows the result of diagnosis and heart failure prediction for original Chet, reproduced Chet, $Chet_{att-}$ and $Chet_{d-}$ on MIMIC-III dataset. We noticed that $Chet_{d-}$(removing the dynamic part of GNN) has significant drop on both F1 scores for diagnosis and heart failure predictions and recall for  diagnosis predictions which validates the effectiveness of dynamic learning for the combination graph. However, we can see that $Chet_{d-}$ actually has a slightly higher AUC score than the reproduced Chet, there can be two main reasons: 1) The dynamic learning plays a more important role in diagnosis prediction than heart failure predictions. 2) The slightly higher AUC of $Chet_{d-}$ model is possibly an one-time error introduced because we only trained $Chet_{d-}$ model once with 20 epochs. In terms of $Chet_{att-}$ model, we can see the model has significantly lower recall for diagnosis prediction and significantly lower f1 for heart failure prediction compared to the reproduced Chet but the f1 score for diagnosis prediction and AUC for heart failure prediction are slightly higher than the reproduced Chet. And also $Chet_{att-}$ performs better than  $Chet_{d-}$. From this result, we can also draw two conclusions: 1) Removing the final attention in the embedding layer retains the general structure of Chet so the effectiveness of attention is lower than the dynamic GNN. 2) The slightly higher AUC of $Chet_{att-}$ model is possibly an one-time error introduced because we only trained $Chet_{att-}$ model once with 20 epochs.
 
 
@@ -393,7 +395,7 @@ training for one time which may have led to some errors.
 \begin{itemize}
     \item MIMIC data is readily available so we have no issue downloading, accessing or using the data.
     \item The original \href{https://github.com/LuChang-CS/Chet}{codebase} is well organized with clear instructions in readme file, so it is easy to run the author's code locally for our initial investigation and also easier to understand the code structure
-    \item The CGL baseline model\href{https://github.com/LuChang-CS/CGL}{codebase} is available and with clear instruction so it saves us a lot of efforts when reproducing the baseline model performance.
+    \item The CGL baseline model \href{https://github.com/LuChang-CS/CGL}{codebase} is available and with clear instruction so it saves us a lot of efforts when reproducing the baseline model performance.
     \item In the original paper, the author already applied subgraphs’ adjacency matrix calculation in graph layer so we don't need work with large and sparse matrix, which significantly improved computational efficiency for us.
     \item Google collab provides free GPU and has great integration with github which makes it easier for us to use and improves our model training speed by 5 times compared to initial CPUs on our local machine.
 \end{itemize}

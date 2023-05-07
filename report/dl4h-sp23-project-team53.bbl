@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Cho et~al.(2014)Cho, van Merrienboer, Gulcehre, Bahdanau, Bougares,
@@ -49,6 +49,13 @@ Chang Lu, Chandan~K Reddy, Prithwish Chakraborty, Samantha Kleinberg, and Yue
   on Artificial Intelligence, {IJCAI-21}}, pages 3529--3535. International
   Joint Conferences on Artificial Intelligence Organization.
 \newblock Main Track.
+
+\bibitem[{Turner(2022)}]{pytorch_forum}
+Philip Turner. 2022.
+\newblock Sequential throughput of gpu execution.
+\newblock
+  \url{https://discuss.pytorch.org/t/sequential-throughput-of-gpu-execution/156303}.
+\newblock Accessed on May 5th, 2023.
 
 \bibitem[{Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones,
   Gomez, Kaiser, and Polosukhin}]{dp_attention}
