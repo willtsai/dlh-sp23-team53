@@ -108,7 +108,7 @@ performance.
 \end{itemize}
 
 \section{Methodology}
-In this section , we demonstrate the details of the model used in the original
+In this section, we demonstrate the details of the model used in the original
 paper, our implementation approach as well as necessary computational resource.
 \subsection{Model descriptions}
 The Chet model can be decomposed into three layers: graph layer, transition
@@ -240,21 +240,26 @@ step.
 All code are implemented with Python and PyTorch. For additional package and
 version details, please refer to
 \href{https://github.com/willtsai/dlh-sp23-team53/blob/main/requirements.txt}{requirements.txt}.
-In our initial investigation, it took around 10 minutes for data preprocessing
-and approximately 96 hours to complete total 200 epoches of training for a
-combined MIMIC-III/MIMIC-IV training set on our local machine with 16GB memory
-and Apple M1 PRO chip. In our reproduction implementation, it took 10 hours to
-actual finish 10 epoches of training for a combined MIMIC-III/MIMIC-IV training
-set on the same machine to get an initial result. In order to unblock the
-computational constraints we have with the CPUs on our local machine, we would
-like to further explore the following computational resources:
-\begin{itemize}
-  \item We will try to use the available GPUs(16 cores) on one of our local
-  machines for the model training.
+Initially, we trained the model using our local machine with 16GB memory
+and Apple M1 PRO chip, and it took around 40 minutes for one epoch and around 14 hours in total 
+for a combined MIMIC-III/MIMIC-IV training set for both diagnosis and heart failure prediction
+tasks. In order to unblock ourselves from the computational constraints we have with the CPUs on
+our local machine, we explored three different computational resources:
   \item We will explore with Google Colab to utilize their free standard
-  GPUs(NVIDIA T4 Tensor Core GPUs) for the model training.
-  \item We will explore with Microsoft Azure for available Virtual Machines with
-  GPU using the available credit we have.
+  GPUs(NVIDIA T4 Tensor Core GPUs). This worked pretty well for us and it took around 8 minutes for one epoch and around 2 hours in total 
+  for a combined MIMIC-III/MIMIC-IV training set for both diagnosis and heart failure prediction
+  tasks.
+  \item We tried to explore with Microsoft Azure but we were not able to use GPU-optimized virtual machines from Microsoft Azure due
+  to hardware availability limitations against our computing credits.
+  \item We tried to use the available GPUs(16 cores) on one of our local
+  machines. Although we were able to get the model training to run on our local Apple M1 Pro
+  GPU, the training time actually grew along with unexplainably high computed
+  losses at each epoch. We believe this is due to the fact that the M1 Pro GPU
+  support on PyTorch may be buggy (e.g. this
+  \hyperlink{https://github.com/pytorch/pytorch/issues/77799}{issue}) and suspect
+  that the the sequential throughout issues for RNN described in
+  \hyperlink{https://discuss.pytorch.org/t/sequential-throughput-of-gpu-execution/156303}{the
+  PyTorch forum} \cite{pytorch_forum} affected our executions.
 \end{itemize}
 
 \begin{table*}[ht]
@@ -347,55 +352,64 @@ might be due to random noise or fluctuations in the model training runs, which
 the original paper normalizes by averaging over 5 training runs while we opted to 
 train each model just once given limitations in compute capacity.
 
-\subsection{Additional results not present in the original paper}
-We plan to complete at least one ablation study from the original paper as well
-as an additional ablation experiment of removing the attention from the final
-patient embedding layer (not part of the original paper). We will include our
-results for these additional experiments in the final report.
-% Describe any additional experiments beyond the original paper. This could
-% include experimenting with additional datasets, exploring different methods,
-% running more ablations, or tuning the hyperparameters. For each additional
-% experiment, clearly describe which experiment you conducted, its result, and
-% discussions (e.g. what is the indication of the result).
+\subsection{Ablation studies}
+To help us better understand the effectiveness of the design of each module in Chet,
+we also conducted two ablations studies with two variants of Chet:
+\begin{itemize}
+  \item $Chet_{d-}$: This ablation study is also conducted in the original paper, and we followed the similar approach. 
+  We removed the dynamic part of GNN in Chet and instead of using dynamic subgraphs, we used a universal embedding matrix
+  for all diseases and only used the global combination graph for the aggregation of diagnoses and neighbors.
+  \item $Chet_{att-}$: This ablation study is a new one we proposed for us to better understand the effectiveness of attentions.
+  In the final embedding layer of the model, we removed the location-based attention applied after max pooling.  
+\end{itemize}
+\begin{table*}[ht]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  {Models} & \multicolumn{3}{c|}{Diagnosis} & \multicolumn{2}{c|}{Heart failure} \\
+   \cline{2-6} & w-F1 & R@10 & \ R@20 & AUC & F1  \\ \hline
+  \cline{1-6}{$Chet_{att-}$} & 21.52 & 25.91 & 35.48 & 85.36 & 70.50 \\
+  \cline{1-6} {$Chet_{d-}$} & 19.82 & 25.05 & 34.72 & 85.37 & 69.64 \\
+  \cline{1-6} {Repro Chet} & 21.45 & 26.56 & 36.33 & 85.09 & 71.99  \\
+  \cline{1-6} {Original Chet} & 22.63 & 28.64 & 37.87 & 86.14 & 73.08\\
+  \cline{1-6}
+  \end{tabular}
+  \caption{Diagnosis prediction and heart failure prediction for Chet variants on the MIMIC-III dataset}
+  \label{tab:ablation}
+  \end{table*}
+Table 3 shows the result of diagnosis and heart failure prediction for original Chet, reproduced Chet, $Chet_{att-}$ and $Chet_{d-}$ on MIMIC-III dataset. We noticed that $Chet_{d-}$(removing the dynamic part of GNN) has significant drop on both F1 scores for diagnosis and heart failure predictions and recall for  diagnosis predictions which validates the effectiveness of dynamic learning for the combination graph. However, we can see that $Chet_{d-}$ actually has a slightly higher AUC score than the reproduced Chet, there can be two main reasons: 1) The dynamic learning plays a more important role in diagnosis prediction than heart failure predictions. 2) The slightly higher AUC of $Chet_{d-}$ model is possibly an one-time error introduced because we only trained $Chet_{d-}$ model once with 20 epochs. In terms of $Chet_{att-}$ model, we can see the model has significantly lower recall for diagnosis prediction and significantly lower f1 for heart failure prediction compared to the reproduced Chet but the f1 score for diagnosis prediction and AUC for heart failure prediction are slightly higher than the reproduced Chet. And also $Chet_{att-}$ performs better than  $Chet_{d-}$. From this result, we can also draw two conclusions: 1) Removing the final attention in the embedding layer retains the general structure of Chet so the effectiveness of attention is lower than the dynamic GNN. 2) The slightly higher AUC of $Chet_{att-}$ model is possibly an one-time error introduced because we only trained $Chet_{att-}$ model once with 20 epochs.
+
 
 \section{Discussion}
-\#TODO
-% Describe larger implications of the experimental results, whether the original
-% paper was reproducible, and if it wasn’t, what factors made it irreproducible. 
+From the result of the reproduction study, we are able to confirm the main claim that by utilizing disease combinational information and the dynamic scheme of diseases, the Chet model has higher accuracy for both diagnosis prediction and
+hearth failure prediction than CGL \cite{cgl}, which is the most performant
+of the baseline models. Moreover, we noticed that our reproduction study has fewer parameters than the original paper, and we suspect that in our implementation of the graph layer embeddings we ended up reducing the number of parameters in each model and thus reducing overall space complexity of the computations. 
+In our additional ablation studies, we also learned that 1)The attention in the final embedding layer is less effective than the dynamic GNN part for model accuracy; 2) The dynamic learning plays a more important role in diagnosis prediction than heart failure predictions.
+However, due to time and computational constraints, we were not able to reproduce all baseline models in the paper and we used only 20 epochs for all our model 
+training for one time which may have led to some errors.
 
-% Give your judgement on if you feel the evidence you got from running the code
-% supports the claims of the paper. Discuss the strengths and weaknesses of your
-% approach -- perhaps you didn't have time to run all the experiments, or
-% perhaps you did additional experiments that further strengthened the claims in
-% the paper.
 
-% \subsection{What was easy \#TODO}
-% % Describe which parts of your reproduction study were easy. E.g. was it easy to
-% % run the author's code, or easy to re-implement their method based on the
-% % description in the paper. The goal of this section is to summarize to the
-% % reader which parts of the original paper they could easily apply to their
-% % problem. 
+\subsection{What was easy}
+\begin{itemize}
+    \item MIMIC data is readily available so we have no issue downloading, accessing or using the data.
+    \item The original \href{https://github.com/LuChang-CS/Chet}{codebase} is well organized with clear instructions in readme file, so it is easy to run the author's code locally for our initial investigation and also easier to understand the code structure
+    \item The CGL baseline model\href{https://github.com/LuChang-CS/CGL}{codebase} is available and with clear instruction so it saves us a lot of efforts when reproducing the baseline model performance.
+    \item In the original paper, the author already applied subgraphs’ adjacency matrix calculation in graph layer so we don't need work with large and sparse matrix, which significantly improved computational efficiency for us.
+    \item Google collab provides free GPU and has great integration with github which makes it easier for us to use and improves our model training speed by 5 times compared to initial CPUs on our local machine.
+\end{itemize}
 
-% % Tips: Be careful not to give sweeping generalizations. Something that is easy
-% % for you might be difficult to others. Put what was easy in context and explain
-% % why it was easy (e.g. code had extensive API documentation and a lot of
-% % examples that matched experiments in papers). 
+\subsection{What was difficult}
+\begin{itemize}
+    \item Computational complexity is still the biggest problem that we have. Initially with limited computational resource, it was really expensive(time wise) to train the model. And it also took us significant time to try to explore other possible computational resources.
+    \item The model implementation in the author's code has some difference from the original paper especially in the transition layer which brought some confusion to us.
+    \item Baseline model (CGL) more difficult to reproduce than expected - needed to retrofit the model and data preprocessing to ensure we could train on common dataset. Specifically, we needed to produce an additional patient-code adjacency graph that was required for CGL.
+\end{itemize}
 
-% \subsection{What was difficult \#TODO}
-% % Describe which parts of your reproduction study were difficult or took much
-% % more time than you expected. Perhaps the data was not available and you
-% % couldn't verify some experiments, or the author's code was broken and had to
-% % be debugged first. Or, perhaps some experiments just take too much
-% % time/resources to run and you couldn't verify them. The purpose of this
-% % section is to indicate to the reader which parts of the original paper are
-% % either difficult to re-use, or require a significant amount of work and
-% % resources to verify. 
-
-% % Tips: Be careful to put your discussion in context. For example, don't say
-% % ``the math was difficult to follow,'' say ``the math requires advanced
-% % knowledge of calculus to follow.'' 
-
-% \subsection{Recommendations for reproducibility \#TODO}
+\subsection{Recommendations for reproducibility}
+\begin{itemize}
+    \item More descriptive names for variables in codebase to better align with the equations listed in the paper.
+    \item Data preprocessing was quite complicated so more code documentation on the various functions used will be really helpful.
+\end{itemize}
 % % Describe a set of recommendations to the original authors or others who work
 % % in this area for improving reproducibility.
 
