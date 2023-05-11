@@ -27,6 +27,10 @@ events of patients based on their medical history and context information. We al
 - [github.com/LuChang-CS/Chet](https://github.com/LuChang-CS/Chet)
 - [github.com/LuChang-CS/CGL](https://github.com/LuChang-CS/CGL)
 
+# Main experiment results
+
+<img width="568" alt="image" src="https://github.com/willtsai/dlh-sp23-team53/assets/28876888/dbaed888-a7de-4419-943e-bc95c489287f">
+
 # Instructions
 
 ## Clone this repository
